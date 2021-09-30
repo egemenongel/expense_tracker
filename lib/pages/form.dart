@@ -7,6 +7,8 @@ import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
+import '../marker_manager.dart';
+
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
 
@@ -20,6 +22,7 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
     // var _expenseModel = Provider.of<ExpenseModel>(context, listen: true);
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
@@ -106,7 +109,7 @@ class _FormPageState extends State<FormPage> {
                       cost: int.parse(costController.text),
                       date: DateTime.parse(dateController.text),
                       category: categoryController.text,
-                      location: _expenseListModel.loc,
+                      location: _markerManager.location.toString(),
                     );
                     _expenseListModel.addExpense(expenseModel);
                     _expenseListModel.totalExpense +=

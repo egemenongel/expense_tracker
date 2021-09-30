@@ -43,7 +43,7 @@ class MarkerState extends State<MarkerPage> {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _markerManager = Provider.of<MarkerManager>(context, listen: true);
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
     return Scaffold(
       body: GoogleMap(
         markers: Set.from(_currentMarker),
