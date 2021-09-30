@@ -26,11 +26,12 @@ class MarkerState extends State<MarkerPage> {
   // }
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
+
   _handleTap(LatLng latLng) {
     setState(() {
       _markers.add(Marker(
           icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
-          markerId: MarkerId("id ${id}"),
+          markerId: MarkerId("id $id"),
           position: latLng,
           infoWindow: InfoWindow(title: latLng.toString())));
       location = latLng;
