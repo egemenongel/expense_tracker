@@ -15,38 +15,36 @@ class MarkerPage extends StatefulWidget {
 }
 
 class MarkerState extends State<MarkerPage> {
-  List<Marker> _marker = [];
-  var location = LatLng(40.8957472, 29.168124);
+  final List<Marker> _currentMarker = [];
+  var location = const LatLng(40.8957472, 29.168124);
   var id = 0;
-  // void _onMapCreated(GoogleMapController controller) {
-  //   setState(() {
-  //     _markers.add(const Marker(
-  //         markerId: MarkerId("id"), position: LatLng(40.8957472, 29.168124)));
-  //   });
-  // }
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
+  var mark;
 
   _handleTap(LatLng latLng) {
     setState(() {
-      _marker.add(Marker(
+      // _currentMarker.add(Marker(
+      //     icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
+      //     markerId: MarkerId("id $id"),
+      //     position: latLng,
+      //     infoWindow: InfoWindow(title: latLng.toString())));
+      mark = Marker(
           icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
           markerId: MarkerId("id $id"),
           position: latLng,
-          infoWindow: InfoWindow(title: latLng.toString())));
+          infoWindow: InfoWindow(title: latLng.toString()));
+      _currentMarker.add(mark);
       location = latLng;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel = Provider.of<ExpenseListModel>(context,
-        listen: false); // Should not be rebuilded again.
-    // var _expenseModel = Provider.of<ExpenseModel>(context, listen: true);
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
     return Scaffold(
       body: GoogleMap(
-        markers: Set.from(_marker),
+        markers: Set.from(_currentMarker),
         onTap: _handleTap,
         initialCameraPosition: const CameraPosition(
             target: LatLng(40.9975443, 28.9243776), zoom: 8),
@@ -58,8 +56,9 @@ class MarkerState extends State<MarkerPage> {
             onPressed: () {
               // _expenseListModel.loc = location.toString();
               //SUBMITTEN SONRA EKLENMELİ
+              _markerManager.currentMarker = mark;
               _markerManager.handleTap(location);
-              _markerManager.markersList.add(_marker[0]);
+
               // _markerManager.addMarker();
               debugPrint(
                   "LENGTH:" + _markerManager.markersList.length.toString());

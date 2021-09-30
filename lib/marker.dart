@@ -6,22 +6,20 @@ class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
   var location;
   var id = 0;
+  var currentMarker;
 
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
   handleTap(LatLng latLng) {
     location = latLng;
-    addMarker();
+    markersList.add(currentMarker);
+    id++;
     notifyListeners();
   }
 
   addMarker() {
-    // markersList.add(Marker(
-    //     icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
-    //     markerId: MarkerId("id $id"),
-    //     position: location,
-    //     infoWindow: InfoWindow(title: location.toString())));
-    // id++;
+    markersList.add(currentMarker);
+    id++;
     notifyListeners();
   }
 }
