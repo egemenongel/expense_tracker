@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:biobuluyo_app/marker.dart';
+import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 import 'package:provider/provider.dart';
 import 'package:biobuluyo_app/models/expense.dart';
@@ -21,6 +21,7 @@ class MarkerState extends State<MarkerPage> {
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
   var mark;
+  int a = 2;
 
   _handleTap(LatLng latLng) {
     setState(() {

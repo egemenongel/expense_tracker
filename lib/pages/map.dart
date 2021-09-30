@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:biobuluyo_app/marker.dart';
+import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:provider/provider.dart';
 
 class MapPage extends StatefulWidget {
@@ -13,6 +13,8 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
+    int a = 2;
+
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
     return Scaffold(
         body: GoogleMap(

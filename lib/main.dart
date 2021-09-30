@@ -1,4 +1,4 @@
-import 'package:biobuluyo_app/marker.dart';
+import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 import 'package:biobuluyo_app/pages/add_marker.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Dem',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
