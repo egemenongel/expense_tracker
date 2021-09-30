@@ -13,8 +13,6 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
-    int a = 2;
-
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
     return Scaffold(
         body: GoogleMap(

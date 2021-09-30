@@ -21,7 +21,6 @@ class MarkerState extends State<MarkerPage> {
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
   var mark;
-  int a = 2;
 
   _handleTap(LatLng latLng) {
     setState(() {
