@@ -11,10 +11,10 @@ class MarkerPage extends StatefulWidget {
   const MarkerPage({Key? key}) : super(key: key);
 
   @override
-  State<MarkerPage> createState() => MapSampleState();
+  State<MarkerPage> createState() => MarkerState();
 }
 
-class MapSampleState extends State<MarkerPage> {
+class MarkerState extends State<MarkerPage> {
   List<Marker> _markers = [];
   var location = LatLng(40.8957472, 29.168124);
   var id = 0;
