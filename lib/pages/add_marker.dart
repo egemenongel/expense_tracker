@@ -18,14 +18,14 @@ class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
   var _LatLng = const LatLng(40.8957472, 29.168124);
   var id = 0;
-  var rnd = Random();
-  late var randomColor = rnd.nextInt(360);
+  var _randomColor = Random().nextInt(360);
   var _marker;
 
   _handleTap(LatLng latLng) {
     setState(() {
       _marker = Marker(
-          icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
           markerId: MarkerId("id $id"),
           position: latLng,
           infoWindow: InfoWindow(title: latLng.toString()));
@@ -39,6 +39,7 @@ class MarkerState extends State<MarkerPage> {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+
     return Scaffold(
       body: GoogleMap(
         markers: Set.from(_currentMarker),
@@ -53,9 +54,11 @@ class MarkerState extends State<MarkerPage> {
             onPressed: () {
               // _expenseListModel.loc = _LatLng.toString();
               //SUBMITTEN SONRA EKLENMELİ
+
               _markerManager.currentMarker = _marker;
               _markerManager.handleTap(_LatLng);
 
+              debugPrint(_markerManager.markersList.toString());
               // _markerManager.addMarker();
               debugPrint(
                   "LENGTH:" + _markerManager.markersList.length.toString());
