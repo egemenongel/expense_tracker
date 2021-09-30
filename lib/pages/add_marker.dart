@@ -16,26 +16,21 @@ class MarkerPage extends StatefulWidget {
 
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
-  var location = const LatLng(40.8957472, 29.168124);
+  var _LatLng = const LatLng(40.8957472, 29.168124);
   var id = 0;
   var rnd = Random();
   late var randomColor = rnd.nextInt(360);
-  var mark;
+  var _marker;
 
   _handleTap(LatLng latLng) {
     setState(() {
-      // _currentMarker.add(Marker(
-      //     icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
-      //     markerId: MarkerId("id $id"),
-      //     position: latLng,
-      //     infoWindow: InfoWindow(title: latLng.toString())));
-      mark = Marker(
+      _marker = Marker(
           icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
           markerId: MarkerId("id $id"),
           position: latLng,
           infoWindow: InfoWindow(title: latLng.toString()));
-      _currentMarker.add(mark);
-      location = latLng;
+      _currentMarker.add(_marker);
+      _LatLng = latLng;
     });
   }
 
@@ -56,17 +51,17 @@ class MarkerState extends State<MarkerPage> {
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: ElevatedButton(
             onPressed: () {
-              // _expenseListModel.loc = location.toString();
+              // _expenseListModel.loc = _LatLng.toString();
               //SUBMITTEN SONRA EKLENMELİ
-              _markerManager.currentMarker = mark;
-              _markerManager.handleTap(location);
+              _markerManager.currentMarker = _marker;
+              _markerManager.handleTap(_LatLng);
 
               // _markerManager.addMarker();
               debugPrint(
                   "LENGTH:" + _markerManager.markersList.length.toString());
-              // print(location);
+              // print(_LatLng);
               Navigator.pop(context);
-              // _expenseModel.setLocation(location);
+              // _expenseModel.setLocation(_LatLng);
             },
             child: const Text("Add this location"),
           ),

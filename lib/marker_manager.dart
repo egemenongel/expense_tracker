@@ -12,8 +12,7 @@ class MarkerManager extends ChangeNotifier {
   late var randomColor = rnd.nextInt(360);
   handleTap(LatLng latLng) {
     location = latLng;
-    markersList.add(currentMarker);
-    id++;
+    addMarker();
     notifyListeners();
   }
 
