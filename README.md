@@ -4,7 +4,10 @@ A new Flutter project.
 
 ## TO DO
 
-- [X] aaaa
+- [X] Map Page
+- [ ] Map Marker Descriptions
+- [ ] Edit Expense
+- [ ] Graphs Page
 
 ## Getting Started
 
