@@ -15,7 +15,7 @@ class MarkerPage extends StatefulWidget {
 }
 
 class MarkerState extends State<MarkerPage> {
-  List<Marker> _markers = [];
+  List<Marker> _marker = [];
   var location = LatLng(40.8957472, 29.168124);
   var id = 0;
   // void _onMapCreated(GoogleMapController controller) {
@@ -29,7 +29,7 @@ class MarkerState extends State<MarkerPage> {
 
   _handleTap(LatLng latLng) {
     setState(() {
-      _markers.add(Marker(
+      _marker.add(Marker(
           icon: BitmapDescriptor.defaultMarkerWithHue((randomColor.toDouble())),
           markerId: MarkerId("id $id"),
           position: latLng,
@@ -46,7 +46,7 @@ class MarkerState extends State<MarkerPage> {
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
     return Scaffold(
       body: GoogleMap(
-        markers: Set.from(_markers),
+        markers: Set.from(_marker),
         onTap: _handleTap,
         initialCameraPosition: const CameraPosition(
             target: LatLng(40.9975443, 28.9243776), zoom: 8),
@@ -59,7 +59,8 @@ class MarkerState extends State<MarkerPage> {
               // _expenseListModel.loc = location.toString();
               //SUBMITTEN SONRA EKLENMELİ
               _markerManager.handleTap(location);
-              _markerManager.addMarker();
+              _markerManager.markersList.add(_marker[0]);
+              // _markerManager.addMarker();
               debugPrint(
                   "LENGTH:" + _markerManager.markersList.length.toString());
               // print(location);
