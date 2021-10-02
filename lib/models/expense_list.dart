@@ -5,9 +5,6 @@ class ExpenseListModel extends ChangeNotifier {
   List<ExpenseModel> expenseList = [];
   int totalExpense = 0;
   String loc = "";
-  // ExpenseListModel({required this.expenseList}) {
-  //   this.expenseList = expenseList;
-  // }
 
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
