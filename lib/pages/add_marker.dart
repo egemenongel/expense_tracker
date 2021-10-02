@@ -55,12 +55,8 @@ class MarkerState extends State<MarkerPage> {
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: ElevatedButton(
             onPressed: () {
-              // _expenseListModel.loc = _LatLng.toString();
-              //SUBMITTEN SONRA EKLENMELİ
-
               _markerManager.currentMarker = _marker;
               _markerManager.handleTap(_LatLng);
-
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
