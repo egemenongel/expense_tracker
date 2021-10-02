@@ -14,7 +14,7 @@ void main() {
       create: (_) => ExpenseListModel(),
     ),
     ChangeNotifierProvider(
-      create: (_) => ExpenseModel(date: DateTime.now()),
+      create: (_) => ExpenseModel(),
     ),
     ChangeNotifierProvider(
       create: (_) => MarkerManager(),
