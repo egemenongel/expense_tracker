@@ -17,7 +17,7 @@ class MarkerPage extends StatefulWidget {
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
   var _LatLng = const LatLng(40.8957472, 29.168124);
-  var id = 0;
+  var markerId = 0;
   var _randomColor = Random().nextInt(360);
   var _marker;
 
@@ -29,15 +29,15 @@ class MarkerState extends State<MarkerPage> {
 
     _handleTap(LatLng latLng) {
       setState(() {
-        id = _expenseListModel.expenseList.length - 1;
+        markerId = _expenseListModel.expenseList.length - 1;
         _marker = Marker(
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 (_randomColor.toDouble())),
-            markerId: MarkerId("id $id"),
+            markerId: MarkerId("markerId $markerId"),
             position: latLng,
             infoWindow: InfoWindow(
                 title:
-                    "${_expenseListModel.expenseList[id].cost.toString()} TL"));
+                    "${_expenseListModel.expenseList[markerId].cost.toString()} TL"));
         _currentMarker.add(_marker);
         _LatLng = latLng;
       });
