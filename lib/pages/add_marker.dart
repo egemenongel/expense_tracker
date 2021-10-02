@@ -61,13 +61,7 @@ class MarkerState extends State<MarkerPage> {
               _markerManager.currentMarker = _marker;
               _markerManager.handleTap(_LatLng);
 
-              debugPrint(_markerManager.markersList.toString());
-              // _markerManager.addMarker();
-              debugPrint(
-                  "LENGTH:" + _markerManager.markersList.length.toString());
-              // print(_LatLng);
-              Navigator.pop(context);
-              // _expenseModel.setLocation(_LatLng);
+              Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
           ),
