@@ -88,10 +88,21 @@ class _FormPageState extends State<FormPage> {
                 height: 10,
               ),
               TextButton(
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MarkerPage())),
+                  onPressed: () {
+                    ExpenseModel expenseModel = ExpenseModel(
+                      description: descriptionController.text,
+                      cost: int.parse(costController.text),
+                      date: DateTime.parse(dateController.text),
+                      category: categoryController.text,
+                      location: _markerManager.location.toString(),
+                    );
+                    _expenseListModel.addExpense(expenseModel);
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MarkerPage()));
+                  },
                   child: const Text("Add Location")),
               const SizedBox(
                 height: 60,
@@ -107,8 +118,6 @@ class _FormPageState extends State<FormPage> {
                       location: _markerManager.location.toString(),
                     );
                     _expenseListModel.addExpense(expenseModel);
-                    _expenseListModel.totalExpense +=
-                        int.parse(costController.text);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
