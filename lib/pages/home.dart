@@ -50,8 +50,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     subtitle: Row(
                       children: [
-                        Text(
-                            "${list[index].date.toString().substring(0, 10)}  ${list[index].location}"),
+                        Text(list[index].date.toString().substring(0, 10)),
                         const Expanded(child: SizedBox()),
                         Card(
                           child: Padding(
