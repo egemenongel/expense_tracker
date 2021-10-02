@@ -41,8 +41,6 @@ class MarkerState extends State<MarkerPage> {
             position: latLng,
             onTap: () {
               if (_markerManager.canPush == true) {
-                // Navigator.pushNamed(
-                //     navigatorKey.currentState!.context, "/FormPage");
                 Navigator.push(navigatorKey.currentState!.context,
                     MaterialPageRoute(builder: (context) => HomePage()));
               }
@@ -50,11 +48,7 @@ class MarkerState extends State<MarkerPage> {
             infoWindow: InfoWindow(
                 title:
                     "${_expenseListModel.expenseList[markerId].cost.toString()} TL"));
-        _newMarker = Marker(
-            markerId: MarkerId(""),
-            position: latLng,
-            // infoWindow: InfoWindow(title: "AAA"),
-            onTap: () {});
+
         _currentMarker.add(_marker);
         _LatLng = latLng;
       });
