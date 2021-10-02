@@ -5,9 +5,7 @@ import 'dart:math';
 class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
   var location;
-
   var currentMarker;
-  late var rnd = Random().nextInt(360);
 
   handleTap(LatLng latLng) {
     location = latLng;
@@ -17,7 +15,6 @@ class MarkerManager extends ChangeNotifier {
 
   addMarker() {
     markersList.add(currentMarker);
-
     notifyListeners();
   }
 }
