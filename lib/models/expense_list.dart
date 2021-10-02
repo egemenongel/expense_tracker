@@ -11,6 +11,7 @@ class ExpenseListModel extends ChangeNotifier {
 
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
+    totalExpense += expenseModel.cost!;
     notifyListeners();
   }
 
