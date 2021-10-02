@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:biobuluyo_app/main.dart';
 import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/pages/home.dart';
 import 'package:provider/provider.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class MarkerState extends State<MarkerPage> {
   var markerId = 0;
   var _randomColor = Random().nextInt(360);
   var _marker;
+  var _newMarker;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +32,29 @@ class MarkerState extends State<MarkerPage> {
 
     _handleTap(LatLng latLng) {
       setState(() {
+        _markerManager.canPush = false;
         markerId = _expenseListModel.expenseList.length - 1;
         _marker = Marker(
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 (_randomColor.toDouble())),
             markerId: MarkerId("markerId $markerId"),
             position: latLng,
+            onTap: () {
+              if (_markerManager.canPush == true) {
+                // Navigator.pushNamed(
+                //     navigatorKey.currentState!.context, "/FormPage");
+                Navigator.push(navigatorKey.currentState!.context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              }
+            },
             infoWindow: InfoWindow(
                 title:
                     "${_expenseListModel.expenseList[markerId].cost.toString()} TL"));
+        _newMarker = Marker(
+            markerId: MarkerId(""),
+            position: latLng,
+            // infoWindow: InfoWindow(title: "AAA"),
+            onTap: () {});
         _currentMarker.add(_marker);
         _LatLng = latLng;
       });
