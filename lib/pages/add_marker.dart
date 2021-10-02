@@ -21,24 +21,27 @@ class MarkerState extends State<MarkerPage> {
   var _randomColor = Random().nextInt(360);
   var _marker;
 
-  _handleTap(LatLng latLng) {
-    setState(() {
-      _marker = Marker(
-          icon:
-              BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
-          markerId: MarkerId("id $id"),
-          position: latLng,
-          infoWindow: InfoWindow(title: latLng.toString()));
-      _currentMarker.add(_marker);
-      _LatLng = latLng;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+
+    _handleTap(LatLng latLng) {
+      setState(() {
+        id = _expenseListModel.expenseList.length - 1;
+        _marker = Marker(
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+                (_randomColor.toDouble())),
+            markerId: MarkerId("id $id"),
+            position: latLng,
+            infoWindow: InfoWindow(
+                title:
+                    "${_expenseListModel.expenseList[id].cost.toString()} TL"));
+        _currentMarker.add(_marker);
+        _LatLng = latLng;
+      });
+    }
 
     return Scaffold(
       body: GoogleMap(
@@ -66,7 +69,7 @@ class MarkerState extends State<MarkerPage> {
               Navigator.pop(context);
               // _expenseModel.setLocation(_LatLng);
             },
-            child: const Text("Add this location"),
+            child: const Text("Submit"),
           ),
         ),
       ),
