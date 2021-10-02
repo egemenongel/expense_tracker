@@ -19,7 +19,6 @@ class MarkerManager extends ChangeNotifier {
   addMarker() {
     canPush = true;
     markersList.add(currentMarker);
-    // markersList.add(trialFunction());
     notifyListeners();
   }
 
