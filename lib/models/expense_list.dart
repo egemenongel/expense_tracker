@@ -4,11 +4,18 @@ import 'package:flutter/cupertino.dart';
 class ExpenseListModel extends ChangeNotifier {
   List<ExpenseModel> expenseList = [];
   int totalExpense = 0;
-  String loc = "";
+  var listIndex = 0;
 
+  String loc = "";
+  int markerId = 0;
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
     totalExpense += expenseModel.cost!;
+    notifyListeners();
+  }
+
+  setIndex(index) {
+    listIndex = index;
     notifyListeners();
   }
 
@@ -20,5 +27,9 @@ class ExpenseListModel extends ChangeNotifier {
   clearList() {
     expenseList.clear();
     notifyListeners();
+  }
+
+  setMarkerId(int markerId) {
+    this.markerId = markerId;
   }
 }
