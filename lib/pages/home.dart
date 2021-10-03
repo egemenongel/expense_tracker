@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
 
-    //SNACKBAR CAN BE ADDED.
     return Scaffold(
       body: Column(
         children: [

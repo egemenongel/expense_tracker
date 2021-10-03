@@ -32,12 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: navigatorKey,
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const HomePage(),
-        "/MapPage": (context) => const MapPage(),
-        "/FormPage": (context) => const FormPage(),
-      },
+      home: const HomePage(),
       title: 'BioBuluyo App',
       theme: ThemeData(
         primarySwatch: Colors.blue,

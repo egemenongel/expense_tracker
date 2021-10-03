@@ -5,8 +5,7 @@ A new Flutter project.
 ## TO DO
 
 - [X] Map Page
-- [ ] Map Marker Descriptions
-- [ ] Edit Expense
+- [X] Edit Expense
 - [ ] Graphs Page
 
 ## Getting Started

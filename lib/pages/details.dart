@@ -39,7 +39,7 @@ class DetailsPage extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text("${_listIndex.description!}",
+                      Text(_listIndex.description!,
                           style: Theme.of(context).textTheme.headline5),
                       const SizedBox(
                         height: 5,
