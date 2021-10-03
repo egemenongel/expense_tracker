@@ -7,14 +7,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'form.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
@@ -27,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 50,
           ),
-          Text("Giderlerim", style: Theme.of(context).textTheme.headline5),
+          Text("My Expenses", style: Theme.of(context).textTheme.headline5),
           Expanded(
             child: ListView.separated(
               itemCount: _expenseListModel.expenseList.length,
