@@ -1,5 +1,6 @@
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/pages/edit.dart';
 import 'package:biobuluyo_app/pages/map.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +69,13 @@ class HomePage extends StatelessWidget {
                       caption: "Edit",
                       icon: Icons.edit,
                       color: Colors.blue,
-                      onTap: () {},
+                      onTap: () {
+                        _expenseListModel.setIndex(index);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditPage()));
+                      },
                     ),
                     IconSlideAction(
                       caption: "Close",
@@ -99,9 +106,9 @@ class HomePage extends StatelessWidget {
               onPressed: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const MapPage())),
               child: const Text("Show Map")),
-          Text(
-            "Total: ${_expenseListModel.totalExpense} TL",
-          ),
+          // Text(
+          //   "Total: ${_expenseListModel.totalExpense} TL",
+          // ),
           const SizedBox(
             height: 100,
           ),

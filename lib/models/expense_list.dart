@@ -9,12 +9,21 @@ class ExpenseListModel extends ChangeNotifier {
 
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
-    totalExpense += expenseModel.cost!;
+    // totalExpense += expenseModel.cost!;
     notifyListeners();
   }
 
   removeExpense(index) {
     expenseList.removeAt(index);
+    notifyListeners();
+  }
+
+  setIndex(index) {
+    listIndex = index;
+  }
+
+  editExpense(index, ExpenseModel expenseModel) {
+    expenseList[index] = expenseModel;
     notifyListeners();
   }
 
