@@ -31,19 +31,16 @@ class MarkerState extends State<MarkerPage> {
         Provider.of<ExpenseListModel>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
     var _expenseList = _expenseListStore.expenseList;
-    var _index = _expenseListStore.listIndex;
     _handleTap(LatLng latLng) {
       setState(() {
         _markerManager.canPush = false;
-        _index = _expenseListStore.expenseList.length - 1;
-        markerId = _index;
+        markerId = _expenseList.length - 1;
         _marker = Marker(
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 (_randomColor.toDouble())),
             markerId: MarkerId("markerId $markerId"),
             position: latLng,
             onTap: () {
-              _expenseListStore.setIndex(_expenseList.length - 1);
               if (_markerManager.canPush == true) {
                 _expenseListStore.setMarkerId(markerId);
                 Navigator.push(
@@ -53,9 +50,8 @@ class MarkerState extends State<MarkerPage> {
               }
             },
             infoWindow: InfoWindow(
-                title: "${_expenseList[_index].cost} TL",
-                snippet: "${_expenseList[_index].description} "));
-
+                title: "${_expenseList[markerId].cost} TL",
+                snippet: "${_expenseList[markerId].description}"));
         _currentMarker.add(_marker);
         _LatLng = latLng;
       });

@@ -14,11 +14,6 @@ class ExpenseListModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setIndex(index) {
-    listIndex = index;
-    notifyListeners();
-  }
-
   removeExpense(index) {
     expenseList.removeAt(index);
     notifyListeners();
