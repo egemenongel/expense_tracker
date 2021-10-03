@@ -27,15 +27,15 @@ class MarkerState extends State<MarkerPage> {
 
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel =
+    var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-    var _expenseList = _expenseListModel.expenseList;
-    var _index = _expenseListModel.listIndex;
+    var _expenseList = _expenseListStore.expenseList;
+    var _index = _expenseListStore.listIndex;
     _handleTap(LatLng latLng) {
       setState(() {
         _markerManager.canPush = false;
-        _index = _expenseListModel.expenseList.length - 1;
+        _index = _expenseListStore.expenseList.length - 1;
         markerId = _index;
         _marker = Marker(
             icon: BitmapDescriptor.defaultMarkerWithHue(
@@ -43,9 +43,9 @@ class MarkerState extends State<MarkerPage> {
             markerId: MarkerId("markerId $markerId"),
             position: latLng,
             onTap: () {
-              _expenseListModel.setIndex(_expenseList.length - 1);
+              _expenseListStore.setIndex(_expenseList.length - 1);
               if (_markerManager.canPush == true) {
-                _expenseListModel.setMarkerId(markerId);
+                _expenseListStore.setMarkerId(markerId);
                 Navigator.push(
                     navigatorKey.currentState!.context,
                     MaterialPageRoute(
