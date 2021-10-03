@@ -9,32 +9,18 @@ import 'package:date_time_picker/date_time_picker.dart';
 
 import '../marker_manager.dart';
 
-class FormPage extends StatefulWidget {
+class FormPage extends StatelessWidget {
   const FormPage({Key? key}) : super(key: key);
 
-  @override
-  _FormPageState createState() => _FormPageState();
-}
-
-// MAYBE CONVERT TO STATELESS
-class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-    // var _expenseModel = Provider.of<ExpenseModel>(context, listen: true);
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
     TextEditingController categoryController = TextEditingController();
     TextEditingController? dateController = TextEditingController();
-
-    // LatLng? _getLocation() {
-    //   if (_expenseModel.location != null) {
-    //     return _expenseModel.location;
-    //   }
-    //   return LatLng(0, 0);
-    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +61,7 @@ class _FormPageState extends State<FormPage> {
                 initialValue: "",
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2100),
-                icon: Icon(Icons.event),
+                icon: const Icon(Icons.event),
                 dateLabelText: 'Date',
                 timeLabelText: "Hour",
                 onChanged: (val) => dateController.text = val,

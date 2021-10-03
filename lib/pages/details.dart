@@ -13,11 +13,11 @@ class DetailsPage extends StatelessWidget {
     var _listIndex = _list[_expenseListModel.markerId];
     return Scaffold(
         body: Center(
-            child: Container(
+            child: SizedBox(
       height: 150,
       width: 250,
       child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               boxShadow: [BoxShadow(blurRadius: 30, spreadRadius: 1)]),
           child: InkWell(
             child: Card(
@@ -26,38 +26,39 @@ class DetailsPage extends StatelessWidget {
                 ),
                 color: Colors.cyan,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "${_listIndex.cost!} TL",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text("${_listIndex.description!}",
                           style: Theme.of(context).textTheme.headline5),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
                         _listIndex.date!.toString().substring(0, 10),
                         style: TextStyle(color: Colors.orange[200]),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: SizedBox(),
                           ),
                           Text(
                             "${_listIndex.category}",
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ],
                       )
