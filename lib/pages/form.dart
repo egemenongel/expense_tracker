@@ -22,6 +22,17 @@ class FormPage extends StatelessWidget {
     TextEditingController categoryController = TextEditingController();
     TextEditingController? dateController = TextEditingController();
 
+    void _sendForm() {
+      ExpenseModel expenseModel = ExpenseModel(
+        description: descriptionController.text,
+        cost: int.parse(costController.text),
+        date: DateTime.parse(dateController.text),
+        category: categoryController.text,
+        location: _markerManager.location.toString(),
+      );
+      _expenseListModel.addExpense(expenseModel);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Expense"),
@@ -38,23 +49,15 @@ class FormPage extends StatelessWidget {
                 controller: costController,
                 keyboardType: TextInputType.number,
               ),
-
               TextFormField(
                 decoration: const InputDecoration(labelText: "Description"),
                 controller: descriptionController,
                 keyboardType: TextInputType.name,
               ),
-              // TextFormField(
-              //   decoration: const InputDecoration(labelText: "Date"),
-              //   controller: dateController,
-              //   keyboardType: TextInputType.datetime,
-              // ),
               TextFormField(
                 decoration: const InputDecoration(labelText: "Category"),
                 controller: categoryController,
               ),
-              // Text(_expenseModel.getLocation().toString()),
-
               DateTimePicker(
                 type: DateTimePickerType.date,
                 dateMask: 'd MMM, yyyy',
@@ -75,15 +78,7 @@ class FormPage extends StatelessWidget {
               ),
               TextButton(
                   onPressed: () {
-                    ExpenseModel expenseModel = ExpenseModel(
-                      description: descriptionController.text,
-                      cost: int.parse(costController.text),
-                      date: DateTime.parse(dateController.text),
-                      category: categoryController.text,
-                      location: _markerManager.location.toString(),
-                    );
-                    _expenseListModel.addExpense(expenseModel);
-
+                    _sendForm();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -96,14 +91,7 @@ class FormPage extends StatelessWidget {
               ElevatedButton(
                   child: const Text("Submit"),
                   onPressed: () {
-                    ExpenseModel expenseModel = ExpenseModel(
-                      description: descriptionController.text,
-                      cost: int.parse(costController.text),
-                      date: DateTime.parse(dateController.text),
-                      category: categoryController.text,
-                      location: _markerManager.location.toString(),
-                    );
-                    _expenseListModel.addExpense(expenseModel);
+                    _sendForm();
                     Navigator.push(
                         context,
                         MaterialPageRoute(

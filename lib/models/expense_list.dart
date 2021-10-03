@@ -5,9 +5,8 @@ class ExpenseListModel extends ChangeNotifier {
   List<ExpenseModel> expenseList = [];
   int totalExpense = 0;
   var listIndex = 0;
-
-  String loc = "";
   int markerId = 0;
+
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
     totalExpense += expenseModel.cost!;
