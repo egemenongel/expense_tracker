@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:biobuluyo_app/main.dart';
 import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/pages/details.dart';
 import 'package:biobuluyo_app/pages/home.dart';
 import 'package:provider/provider.dart';
 import 'package:biobuluyo_app/models/expense.dart';
@@ -29,25 +30,31 @@ class MarkerState extends State<MarkerPage> {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-
+    var _expenseList = _expenseListModel.expenseList;
+    var _index = _expenseListModel.listIndex;
     _handleTap(LatLng latLng) {
       setState(() {
         _markerManager.canPush = false;
-        markerId = _expenseListModel.expenseList.length - 1;
+        _index = _expenseListModel.expenseList.length - 1;
+        markerId = _index;
         _marker = Marker(
             icon: BitmapDescriptor.defaultMarkerWithHue(
                 (_randomColor.toDouble())),
             markerId: MarkerId("markerId $markerId"),
             position: latLng,
             onTap: () {
+              _expenseListModel.setIndex(_expenseList.length - 1);
               if (_markerManager.canPush == true) {
-                Navigator.push(navigatorKey.currentState!.context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                _expenseListModel.setMarkerId(markerId);
+                Navigator.push(
+                    navigatorKey.currentState!.context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailsPage()));
               }
             },
             infoWindow: InfoWindow(
-                title:
-                    "${_expenseListModel.expenseList[markerId].cost.toString()} TL"));
+                title: "${_expenseList[_index].cost} TL",
+                snippet: "${_expenseList[_index].description} "));
 
         _currentMarker.add(_marker);
         _LatLng = latLng;
