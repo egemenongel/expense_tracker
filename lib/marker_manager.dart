@@ -21,13 +21,4 @@ class MarkerManager extends ChangeNotifier {
     markersList.add(currentMarker);
     notifyListeners();
   }
-
-  // Marker trialFunction() {
-  //   return Marker(
-  //       markerId: const MarkerId(""),
-  //       position: location, // Same location, different marker.
-  //       onTap: () {
-  //         Navigator.pushNamed(navigatorKey.currentState!.context, "/FormPage");
-  //       });
-  // }
 }
