@@ -18,7 +18,7 @@ class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
   var _LatLng;
   var _markerId = 0;
-  var _randomColor = Random().nextInt(360);
+  final _randomColor = Random().nextInt(360);
   var _marker;
 
   @override

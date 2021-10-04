@@ -73,15 +73,9 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditPage()));
+                                builder: (context) => const EditPage()));
                       },
                     ),
-                    IconSlideAction(
-                      caption: "Close",
-                      icon: Icons.clear,
-                      color: Colors.black,
-                      onTap: () {},
-                    )
                   ],
                   secondaryActions: [
                     IconSlideAction(
@@ -90,12 +84,6 @@ class HomePage extends StatelessWidget {
                       color: Colors.red,
                       onTap: () => _expenseListModel.removeExpense(index),
                     ),
-                    IconSlideAction(
-                      caption: "Close",
-                      icon: Icons.clear,
-                      color: Colors.black,
-                      onTap: () {},
-                    )
                   ],
                 );
               },
