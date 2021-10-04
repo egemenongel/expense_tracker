@@ -19,11 +19,10 @@ class MarkerPage extends StatefulWidget {
 
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
-  var _LatLng = const LatLng(40.8957472, 29.168124);
+  var _LatLng;
   var _markerId = 0;
   var _randomColor = Random().nextInt(360);
   var _marker;
-  var _newMarker;
 
   @override
   Widget build(BuildContext context) {
