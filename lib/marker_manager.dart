@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:math';
-import 'main.dart';
 
 class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
