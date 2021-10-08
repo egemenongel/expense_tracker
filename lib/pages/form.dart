@@ -17,6 +17,8 @@ class FormPage extends StatelessWidget {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+
+    final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
     TextEditingController categoryController = TextEditingController();
@@ -33,74 +35,93 @@ class FormPage extends StatelessWidget {
       _expenseListModel.addExpense(expenseModel);
     }
 
+    String? _validation(String? value) {
+      if (value!.isEmpty) {
+        return "This field cannot be empty";
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Expense"),
       ),
-      body: Form(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
+      body: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFormField(
-                decoration: const InputDecoration(labelText: "Cost"),
-                controller: costController,
-                keyboardType: TextInputType.number,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(labelText: "Description"),
-                controller: descriptionController,
-                keyboardType: TextInputType.name,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(labelText: "Category"),
-                controller: categoryController,
-              ),
-              DateTimePicker(
-                type: DateTimePickerType.date,
-                dateMask: 'd MMM, yyyy',
-                initialValue: "",
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2100),
-                icon: const Icon(Icons.event),
-                dateLabelText: 'Date',
-                timeLabelText: "Hour",
-                onChanged: (val) => dateController.text = val,
-                validator: (val) {
-                  return null;
-                },
-                onSaved: (val) => dateController.text = val!,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              TextButton(
-                  onPressed: () {
-                    _sendForm();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MarkerPage()));
-                  },
-                  child: const Text("Add Location")),
-              const SizedBox(
-                height: 60,
-              ),
-              ElevatedButton(
-                  child: const Text("Submit"),
-                  onPressed: () {
-                    _sendForm();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
-                  }),
-            ],
+        children: [
+          const SizedBox(
+            height: 50,
           ),
-        ),
-      ),
+          Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: "Cost"),
+                    controller: costController,
+                    keyboardType: TextInputType.number,
+                    validator: (value) => _validation(value),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: "Description"),
+                    controller: descriptionController,
+                    validator: (value) => _validation(value),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(labelText: "Category"),
+                    controller: categoryController,
+                    validator: (value) => _validation(value),
+                  ),
+                  DateTimePicker(
+                    type: DateTimePickerType.date,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: "",
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    icon: const Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    onChanged: (val) => dateController.text = val,
+                    validator: (value) => _validation(value),
+                    onSaved: (val) => dateController.text = val!,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _sendForm();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MarkerPage()));
+                        }
+                      },
+                      child: const Text("Add Location")),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  ElevatedButton(
+                      child: const Text("Submit"),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _sendForm();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        }
+                      }),
+                ],
+              ),
+            ),
+          )
+        ],
+      )),
     );
   }
 }
