@@ -16,7 +16,7 @@ class MarkerPage extends StatefulWidget {
 
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
-  var _LatLng;
+  var _latLng;
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
   var _marker;
@@ -36,6 +36,7 @@ class MarkerState extends State<MarkerPage> {
               BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
           markerId: MarkerId("markerId $_markerId"),
           position: latLng,
+          infoWindow: InfoWindow(title: "${_expenseList[_markerId].cost} TL"),
           onTap: () {
             if (_markerManager.canPush == true) {
               _expenseListStore.setMarkerId(_markerId);
@@ -44,8 +45,9 @@ class MarkerState extends State<MarkerPage> {
             }
           },
         );
+
         _currentMarker.add(_marker);
-        _LatLng = latLng;
+        _latLng = latLng;
       });
     }
 
@@ -62,7 +64,7 @@ class MarkerState extends State<MarkerPage> {
           child: ElevatedButton(
             onPressed: () {
               _markerManager.currentMarker = _marker;
-              _markerManager.handleTap(_LatLng);
+              _markerManager.handleTap(_latLng);
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
