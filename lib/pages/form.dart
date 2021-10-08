@@ -94,7 +94,6 @@ class FormPage extends StatelessWidget {
                     timeLabelText: "Hour",
                     onChanged: (val) => dateController.text = val,
                     validator: (value) => _validation(value),
-                    onSaved: (val) => dateController.text = val!,
                   ),
                   const SizedBox(
                     height: 10,
