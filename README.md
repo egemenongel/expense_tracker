@@ -6,7 +6,7 @@ A new Flutter project.
 
 - [X] Map Page
 - [X] Edit Expense
-- [ ] Graphs Page
+- [ ] Category Page
 
 ## Getting Started
 
