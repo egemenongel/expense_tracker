@@ -35,6 +35,14 @@ class FormPage extends StatelessWidget {
       _expenseListModel.addExpense(expenseModel);
     }
 
+    String? _costValidation(String? value) {
+      if (value!.isEmpty) {
+        return "This field cannot be empty";
+      } else if (double.tryParse(value) == null) {
+        return "Please type a number";
+      }
+    }
+
     String? _validation(String? value) {
       if (value!.isEmpty) {
         return "This field cannot be empty";
@@ -63,7 +71,7 @@ class FormPage extends StatelessWidget {
                     decoration: const InputDecoration(labelText: "Cost"),
                     controller: costController,
                     keyboardType: TextInputType.number,
-                    validator: (value) => _validation(value),
+                    validator: (value) => _costValidation(value),
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Description"),
