@@ -97,6 +97,13 @@ class HomePage extends StatelessWidget {
                   onPressed: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const MapPage())),
                   child: const Text("Show Map")),
+              const SizedBox(
+                height: 30,
+                child: VerticalDivider(
+                  width: 0,
+                  color: Colors.grey,
+                ),
+              ),
               TextButton(
                   onPressed: () => Navigator.push(
                       context,
