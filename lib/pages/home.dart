@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/pages/categories.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -89,10 +90,21 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          TextButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MapPage())),
-              child: const Text("Show Map")),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MapPage())),
+                  child: const Text("Show Map")),
+              TextButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CategoryPage())),
+                  child: const Text("Categories")),
+            ],
+          ),
           // Text(
           //   "Total: ${_expenseListModel.totalExpense} TL",
           // ),
