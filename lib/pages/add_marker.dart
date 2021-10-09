@@ -20,6 +20,7 @@ class MarkerState extends State<MarkerPage> {
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
   var _marker;
+  GoogleMapController? _googleMapController;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,7 @@ class MarkerState extends State<MarkerPage> {
 
     return Scaffold(
       body: GoogleMap(
+        onMapCreated: (controller) => _googleMapController = controller,
         markers: Set.from(_currentMarker),
         onTap: _handleTap,
         initialCameraPosition: const CameraPosition(
