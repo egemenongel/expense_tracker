@@ -17,13 +17,14 @@ class MarkerPage extends StatefulWidget {
 }
 
 class MarkerState extends State<MarkerPage> {
+  static const _initialCameraPosition =
+      CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
+  GoogleMapController? _googleMapController;
   final List<Marker> _currentMarker = [];
   LatLng? _latLng;
   Marker? _marker;
-
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
-  GoogleMapController? _googleMapController;
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +58,10 @@ class MarkerState extends State<MarkerPage> {
 
     return Scaffold(
       body: GoogleMap(
-        onMapCreated: (controller) => _googleMapController = controller,
-        markers: Set.from(_currentMarker),
-        onTap: _handleTap,
-        initialCameraPosition: const CameraPosition(
-            target: LatLng(40.9975443, 28.9243776), zoom: 8),
-      ),
+          onMapCreated: (controller) => _googleMapController = controller,
+          markers: Set.from(_currentMarker),
+          onTap: _handleTap,
+          initialCameraPosition: _initialCameraPosition),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 100),
