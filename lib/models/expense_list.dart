@@ -6,6 +6,7 @@ class ExpenseListModel extends ChangeNotifier {
   int totalExpense = 0;
   var listIndex = 0;
   int markerId = 0;
+  String category = "";
 
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
@@ -34,5 +35,9 @@ class ExpenseListModel extends ChangeNotifier {
 
   setMarkerId(int markerId) {
     this.markerId = markerId;
+  }
+
+  setCategory(String category, ExpenseModel expenseModel) {
+    this.category = expenseModel.category!;
   }
 }
