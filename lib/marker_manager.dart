@@ -3,8 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
-  var location;
-  var currentMarker;
+  LatLng? location;
+  Marker? currentMarker;
   bool canPush = false;
 
   handleTap(LatLng latLng) {
@@ -15,7 +15,7 @@ class MarkerManager extends ChangeNotifier {
 
   addMarker() {
     canPush = true;
-    markersList.add(currentMarker);
+    markersList.add(currentMarker!);
     notifyListeners();
   }
 }

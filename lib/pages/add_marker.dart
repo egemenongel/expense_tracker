@@ -16,8 +16,9 @@ class MarkerPage extends StatefulWidget {
 
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
-  var _latLng;
-  var _marker;
+  LatLng? _latLng;
+  Marker? _marker;
+
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
   GoogleMapController? _googleMapController;
@@ -47,7 +48,7 @@ class MarkerState extends State<MarkerPage> {
           },
         );
 
-        _currentMarker.add(_marker);
+        _currentMarker.add(_marker!);
         _latLng = latLng;
       });
     }
@@ -66,7 +67,7 @@ class MarkerState extends State<MarkerPage> {
           child: ElevatedButton(
             onPressed: () {
               _markerManager.currentMarker = _marker;
-              _markerManager.handleTap(_latLng);
+              _markerManager.handleTap(_latLng!);
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
