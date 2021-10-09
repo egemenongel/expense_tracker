@@ -17,9 +17,9 @@ class MarkerPage extends StatefulWidget {
 class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarker = [];
   var _latLng;
+  var _marker;
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
-  var _marker;
   GoogleMapController? _googleMapController;
 
   @override
