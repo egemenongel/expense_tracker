@@ -41,7 +41,6 @@ class MarkerState extends State<MarkerPage> {
               BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
           markerId: MarkerId("markerId $_markerId"),
           position: latLng,
-          infoWindow: InfoWindow(title: "${_expenseList[_markerId].cost} TL"),
           onTap: () {
             if (_markerManager.canPush == true) {
               _expenseListStore.setMarkerId(_markerId);
