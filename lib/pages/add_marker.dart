@@ -20,8 +20,7 @@ class MarkerState extends State<MarkerPage> {
   static const _initialCameraPosition =
       CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
   GoogleMapController? _googleMapController;
-  final List<Marker> _currentMarker = [];
-  LatLng? _latLng;
+  final List<Marker> _currentMarkerList = [];
   Marker? _marker;
   var _markerId = 0;
   final _randomColor = Random().nextInt(360);
@@ -50,16 +49,14 @@ class MarkerState extends State<MarkerPage> {
             }
           },
         );
-
-        _currentMarker.add(_marker!);
-        _latLng = latLng;
+        _currentMarkerList.add(_marker!);
       });
     }
 
     return Scaffold(
       body: GoogleMap(
           onMapCreated: (controller) => _googleMapController = controller,
-          markers: Set.from(_currentMarker),
+          markers: Set.from(_currentMarkerList),
           onTap: _handleTap,
           initialCameraPosition: _initialCameraPosition),
       bottomNavigationBar: BottomAppBar(
@@ -67,10 +64,7 @@ class MarkerState extends State<MarkerPage> {
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: ElevatedButton(
             onPressed: () {
-              _markerManager.currentMarker = _marker;
-              _markerManager.handleTap();
-
-              // _markerId = _expenseList.length - 1;
+              _markerManager.addMarker(_marker!);
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
