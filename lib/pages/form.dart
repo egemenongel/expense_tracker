@@ -30,7 +30,6 @@ class FormPage extends StatelessWidget {
         cost: int.parse(costController.text),
         date: DateTime.parse(dateController.text),
         category: categoryController.text,
-        location: _markerManager.location.toString(),
       );
       _expenseListModel.addExpense(expenseModel);
     }

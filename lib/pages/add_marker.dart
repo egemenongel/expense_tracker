@@ -68,7 +68,7 @@ class MarkerState extends State<MarkerPage> {
           child: ElevatedButton(
             onPressed: () {
               _markerManager.currentMarker = _marker;
-              _markerManager.handleTap(_latLng!);
+              _markerManager.handleTap();
 
               // _markerId = _expenseList.length - 1;
               Navigator.of(context).popUntil((route) => route.isFirst);
