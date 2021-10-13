@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,8 @@ class DetailsPage extends StatelessWidget {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     var _list = _expenseListModel.expenseList;
-    var _listIndex = _list[_expenseListModel.markerId];
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+    var _listIndex = _list[_markerManager.markerId];
     return Scaffold(
         body: Center(
             child: SizedBox(

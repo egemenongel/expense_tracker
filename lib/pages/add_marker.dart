@@ -39,11 +39,12 @@ class MarkerState extends State<MarkerPage> {
         _marker = Marker(
           icon:
               BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
-          markerId: MarkerId("markerId $_markerId"),
+          markerId: MarkerId("$_markerId"),
           position: latLng,
           onTap: () {
+            debugPrint(_marker!.markerId.value);
             if (_markerManager.canPush == true) {
-              _expenseListStore.setMarkerId(_markerId);
+              _markerManager.setMarkerId(_markerId);
               Navigator.push(navigatorKey.currentState!.context,
                   MaterialPageRoute(builder: (context) => const DetailsPage()));
             }
@@ -68,6 +69,8 @@ class MarkerState extends State<MarkerPage> {
             onPressed: () {
               _markerManager.currentMarker = _marker;
               _markerManager.handleTap(_latLng!);
+
+              // _markerId = _expenseList.length - 1;
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),

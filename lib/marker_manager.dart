@@ -6,6 +6,7 @@ class MarkerManager extends ChangeNotifier {
   LatLng? location;
   Marker? currentMarker;
   bool canPush = false;
+  int markerId = 0;
 
   handleTap(LatLng latLng) {
     location = latLng;
@@ -17,5 +18,9 @@ class MarkerManager extends ChangeNotifier {
     canPush = true;
     markersList.add(currentMarker!);
     notifyListeners();
+  }
+
+  setMarkerId(int markerId) {
+    this.markerId = markerId;
   }
 }
