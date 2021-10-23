@@ -6,11 +6,13 @@ class ExpenseModel extends ChangeNotifier {
   DateTime? date;
   String? category;
   String? location;
+  String? marker;
 
   ExpenseModel({
     this.description,
     this.cost,
     this.date,
     this.category,
+    this.marker,
   });
 }
