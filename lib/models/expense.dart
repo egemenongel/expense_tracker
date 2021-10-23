@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class ExpenseModel extends ChangeNotifier {
   String? description;
   int? cost;
-  DateTime? date; //VARIABLE SHOULD BE IN TIME
+  DateTime? date;
   String? category;
   String? location;
 
