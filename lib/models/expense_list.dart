@@ -32,12 +32,4 @@ class ExpenseListModel extends ChangeNotifier {
     expenseList.clear();
     notifyListeners();
   }
-
-  setMarkerId(int markerId) {
-    this.markerId = markerId;
-  }
-
-  setCategory(String category, ExpenseModel expenseModel) {
-    this.category = expenseModel.category!;
-  }
 }
