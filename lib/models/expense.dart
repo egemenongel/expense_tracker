@@ -12,14 +12,5 @@ class ExpenseModel extends ChangeNotifier {
     this.cost,
     this.date,
     this.category,
-    this.location,
   });
-
-  setLocation(String location) {
-    this.location = location;
-  }
-
-  getLocation() {
-    return location;
-  }
 }
