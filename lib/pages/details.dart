@@ -1,7 +1,6 @@
-import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:biobuluyo_app/models/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class DetailsPage extends StatelessWidget {
