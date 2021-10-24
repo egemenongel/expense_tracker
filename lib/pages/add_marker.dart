@@ -2,12 +2,7 @@ import 'package:biobuluyo_app/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:math';
 
-import 'package:biobuluyo_app/main.dart';
-import 'package:biobuluyo_app/pages/details.dart';
-
-import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class MarkerPage extends StatefulWidget {
@@ -23,7 +18,7 @@ class MarkerState extends State<MarkerPage> {
   GoogleMapController? _googleMapController;
   final List<Marker> _currentMarkerList = [];
   Marker? _marker;
-  final _randomColor = Random().nextInt(360);
+  // final _randomColor = Random().nextInt(360);
   var latLng;
   @override
   Widget build(BuildContext context) {
@@ -35,7 +30,6 @@ class MarkerState extends State<MarkerPage> {
         _marker = Marker(
           // icon:
           //     BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
-          // markerId: MarkerId("$_markerId"),
           markerId: const MarkerId(""),
           position: latLng,
         );
