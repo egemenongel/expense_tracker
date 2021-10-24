@@ -14,21 +14,21 @@ class FormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: true);
+        Provider.of<ExpenseListModel>(context, listen: false);
     final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
     TextEditingController categoryController = TextEditingController();
     TextEditingController? dateController = TextEditingController();
 
-    void _sendForm() {
+    ExpenseModel _createModel() {
       ExpenseModel expenseModel = ExpenseModel(
         description: descriptionController.text,
         cost: int.parse(costController.text),
         date: DateTime.parse(dateController.text),
         category: categoryController.text,
       );
-      _expenseListModel.addExpense(expenseModel);
+      return expenseModel;
     }
 
     String? _costValidation(String? value) {
@@ -97,17 +97,12 @@ class FormPage extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ExpenseModel expenseModel = ExpenseModel(
-                            description: descriptionController.text,
-                            cost: int.parse(costController.text),
-                            date: DateTime.parse(dateController.text),
-                            category: categoryController.text,
-                          );
+                          _createModel();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MarkerPage(
-                                        expense: expenseModel,
+                                        expense: _createModel(),
                                       )));
                         }
                       },
@@ -119,7 +114,7 @@ class FormPage extends StatelessWidget {
                       child: const Text("Submit"),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _sendForm();
+                          _expenseListModel.addExpense(_createModel());
                           Navigator.push(
                               context,
                               MaterialPageRoute(
