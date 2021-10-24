@@ -11,11 +11,11 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _markerManager = Provider.of<MarkerManager>(context, listen: true);
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
     return Scaffold(
         body: GoogleMap(
-      markers: Set.from(_markerManager.markersList),
+      markers: Set.from(_markerManager.myList),
       initialCameraPosition: _initialCameraPosition,
     ));
   }
