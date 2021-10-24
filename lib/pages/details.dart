@@ -15,59 +15,72 @@ class DetailsPage extends StatelessWidget {
     var _listIndex = _list[_markerManager.markerId];
     return Scaffold(
         body: Center(
-            child: SizedBox(
-      height: 150,
-      width: 250,
-      child: Container(
-          decoration: const BoxDecoration(
-              boxShadow: [BoxShadow(blurRadius: 30, spreadRadius: 1)]),
-          child: InkWell(
-            child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                color: Colors.cyan,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 280),
+        child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                  Color(0xFF0971B3),
+                  Color(0xFFFF0000)
+                ], // red to yellow
+                tileMode:
+                    TileMode.repeated, // repeats the gradient over the canvas
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
+                      const Icon(
+                        Icons.payments,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Text(
                         "${_listIndex.cost!} TL",
                         style:
                             const TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(_listIndex.description!,
-                          style: Theme.of(context).textTheme.headline5),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        _listIndex.date!.toString().substring(0, 10),
-                        style: TextStyle(color: Colors.orange[200]),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: SizedBox(),
-                          ),
-                          Text(
-                            "${_listIndex.category}",
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      )
                     ],
                   ),
-                )),
-          )),
-    )));
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(_listIndex.description!,
+                      style: const TextStyle(
+                          fontSize: 20, color: Color(0xFFFFCE19))),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        _listIndex.date!.toString().substring(0, 10),
+                        style: const TextStyle(color: Color(0xFF19FF5A)),
+                      ),
+                      const Expanded(
+                        child: SizedBox(),
+                      ),
+                      Text(
+                        "${_listIndex.category}",
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )),
+      ),
+    ));
   }
 }
