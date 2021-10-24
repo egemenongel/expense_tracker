@@ -1,5 +1,9 @@
+import 'package:biobuluyo_app/marker_manager.dart';
+import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/pages/categories.dart';
+import 'package:biobuluyo_app/pages/details.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -16,7 +20,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
-
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
     return Scaffold(
       body: Column(
         children: [
@@ -94,8 +98,34 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MapPage())),
+                  onPressed: () {
+                    _markerManager.myList.clear();
+                    for (ExpenseModel expenseModel
+                        in _expenseListModel.expenseList) {
+                      if (expenseModel.latLng != null) {
+                        var id = _markerManager.myList.length;
+                        var marker = Marker(
+                            markerId: MarkerId("${id}"),
+                            position: expenseModel.latLng!,
+                            onTap: () {
+                              _markerManager.id = _expenseListModel.expenseList
+                                  .indexOf(expenseModel);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const DetailsPage()));
+                            });
+                        _markerManager.myList.add(marker);
+                        debugPrint("$id");
+                      }
+                    }
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MapPage()));
+                  },
                   child: const Text("Show Map")),
               const SizedBox(
                 height: 30,
