@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:biobuluyo_app/pages/add_marker.dart';
 import 'package:biobuluyo_app/pages/home.dart';
 
-import '../marker_manager.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
@@ -16,8 +15,6 @@ class FormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
-    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-
     final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();

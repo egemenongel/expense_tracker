@@ -20,7 +20,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
+    var _expenseList = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+
+    void addMarkers() {
+      _markerManager.markersList.clear();
+      for (ExpenseModel expenseModel in _expenseList) {
+        if (expenseModel.latLng != null) {
+          var id = _markerManager.markersList.length;
+          var marker = Marker(
+              markerId: MarkerId("$id"),
+              position: expenseModel.latLng!,
+              onTap: () {
+                _markerManager.markerId = _expenseList.indexOf(expenseModel);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailsPage()));
+              });
+          _markerManager.addMarker(marker);
+        }
+      }
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -64,7 +86,6 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    onTap: () {},
                   ),
                   actionPane: const SlidableScrollActionPane(),
                   actionExtentRatio: 0.20,
@@ -99,28 +120,7 @@ class HomePage extends StatelessWidget {
             children: [
               TextButton(
                   onPressed: () {
-                    _markerManager.myList.clear();
-                    for (ExpenseModel expenseModel
-                        in _expenseListModel.expenseList) {
-                      if (expenseModel.latLng != null) {
-                        var id = _markerManager.myList.length;
-                        var marker = Marker(
-                            markerId: MarkerId("${id}"),
-                            position: expenseModel.latLng!,
-                            onTap: () {
-                              _markerManager.id = _expenseListModel.expenseList
-                                  .indexOf(expenseModel);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const DetailsPage()));
-                            });
-                        _markerManager.myList.add(marker);
-                        debugPrint("$id");
-                      }
-                    }
-
+                    addMarkers();
                     Navigator.push(
                         context,
                         MaterialPageRoute(

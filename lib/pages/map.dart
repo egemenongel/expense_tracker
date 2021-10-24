@@ -15,7 +15,7 @@ class MapPage extends StatelessWidget {
 
     return Scaffold(
         body: GoogleMap(
-      markers: Set.from(_markerManager.myList),
+      markers: Set.from(_markerManager.markersList),
       initialCameraPosition: _initialCameraPosition,
     ));
   }

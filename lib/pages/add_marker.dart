@@ -19,7 +19,7 @@ class MarkerState extends State<MarkerPage> {
   final List<Marker> _currentMarkerList = [];
   Marker? _marker;
   // final _randomColor = Random().nextInt(360);
-  var latLng;
+  LatLng? latLng;
   @override
   Widget build(BuildContext context) {
     var _expenseListStore =

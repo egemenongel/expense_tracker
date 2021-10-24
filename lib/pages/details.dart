@@ -13,7 +13,7 @@ class DetailsPage extends StatelessWidget {
         Provider.of<ExpenseListModel>(context, listen: false);
     var _list = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-    var _listIndex = _list[_markerManager.id];
+    var _listIndex = _list[_markerManager.markerId];
     return Scaffold(
         body: Center(
             child: SizedBox(
