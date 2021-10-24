@@ -3,17 +3,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
-
+  var myList = [];
   bool canPush = false;
-  int markerId = 0;
+  int id = 0;
 
   addMarker(Marker marker) {
     canPush = true;
     markersList.add(marker);
     notifyListeners();
-  }
-
-  setMarkerId(int markerId) {
-    this.markerId = markerId;
   }
 }
