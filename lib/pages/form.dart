@@ -100,11 +100,18 @@ class FormPage extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _sendForm();
+                          ExpenseModel expenseModel = ExpenseModel(
+                            description: descriptionController.text,
+                            cost: int.parse(costController.text),
+                            date: DateTime.parse(dateController.text),
+                            category: categoryController.text,
+                          );
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MarkerPage()));
+                                  builder: (context) => MarkerPage(
+                                        expense: expenseModel,
+                                      )));
                         }
                       },
                       child: const Text("Add Location")),
