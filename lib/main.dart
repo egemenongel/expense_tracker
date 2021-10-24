@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/pages/home.dart';
 
-import 'package:biobuluyo_app/marker_manager.dart';
+import 'package:biobuluyo_app/models/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
