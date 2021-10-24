@@ -19,10 +19,6 @@ class ExpenseListModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setIndex(index) {
-    listIndex = index;
-  }
-
   editExpense(index, ExpenseModel expenseModel) {
     expenseList[index] = expenseModel;
     notifyListeners();
