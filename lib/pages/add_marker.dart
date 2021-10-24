@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -10,8 +11,8 @@ import 'package:biobuluyo_app/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class MarkerPage extends StatefulWidget {
-  const MarkerPage({Key? key}) : super(key: key);
-
+  MarkerPage({Key? key, required this.expense}) : super(key: key);
+  ExpenseModel expense;
   @override
   State<MarkerPage> createState() => MarkerState();
 }
@@ -22,33 +23,23 @@ class MarkerState extends State<MarkerPage> {
   GoogleMapController? _googleMapController;
   final List<Marker> _currentMarkerList = [];
   Marker? _marker;
-  var _markerId = 0;
   final _randomColor = Random().nextInt(360);
-
+  var latLng;
   @override
   Widget build(BuildContext context) {
     var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-    var _expenseList = _expenseListStore.expenseList;
+
     _handleTap(LatLng latLng) {
       setState(() {
-        _markerManager.canPush = false;
-        _markerId = _expenseList.length - 1;
         _marker = Marker(
-          icon:
-              BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
-          markerId: MarkerId("$_markerId"),
+          // icon:
+          //     BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
+          // markerId: MarkerId("$_markerId"),
+          markerId: const MarkerId(""),
           position: latLng,
-          onTap: () {
-            debugPrint(_marker!.markerId.value);
-            if (_markerManager.canPush == true) {
-              _markerManager.setMarkerId(_markerId);
-              Navigator.push(navigatorKey.currentState!.context,
-                  MaterialPageRoute(builder: (context) => const DetailsPage()));
-            }
-          },
         );
+        this.latLng = latLng;
         _currentMarkerList.add(_marker!);
       });
     }
@@ -64,7 +55,9 @@ class MarkerState extends State<MarkerPage> {
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: ElevatedButton(
             onPressed: () {
-              _markerManager.addMarker(_marker!);
+              _expenseListStore.addExpense(widget.expense);
+              widget.expense.latLng =
+                  latLng; //LatLng of last expense is assigned in here.
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
