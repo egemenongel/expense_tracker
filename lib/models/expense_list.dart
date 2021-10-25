@@ -22,6 +22,7 @@ class ExpenseListModel extends ChangeNotifier {
   }
 
   expenseByCategory(String category) {
+    expenseByCategoryList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       if (expenseModel.category == category) {
         expenseByCategoryList.add(expenseModel);
