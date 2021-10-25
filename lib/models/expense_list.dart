@@ -3,10 +3,19 @@ import 'package:biobuluyo_app/models/expense.dart';
 
 class ExpenseListModel extends ChangeNotifier {
   List<ExpenseModel> expenseList = [];
+  List categoryList = [];
   int totalExpense = 0;
   var listIndex = 0;
   int markerId = 0;
-  String category = "";
+
+  addCategory() {
+    for (ExpenseModel expenseModel in expenseList) {
+      var category = expenseModel.category;
+      if (!categoryList.contains(category)) {
+        categoryList.add(category);
+      }
+    }
+  }
 
   addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
