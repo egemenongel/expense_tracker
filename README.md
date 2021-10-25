@@ -7,6 +7,7 @@ A new Flutter project.
 - [X] Map Page
 - [X] Edit Expense
 - [ ] Category Page
+- [ ] Add Total using Fold method.
 
 ## Getting Started
 
