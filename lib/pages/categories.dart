@@ -10,27 +10,32 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: true);
-    var list = _expenseListModel.expenseList;
+    var categoryList = _expenseListModel.categoryList;
+    var expenseList = _expenseListModel.expenseList;
+
     return Scaffold(
-        // body: Column(
-        //   children: [
-        //     const SizedBox(
-        //       height: 150,
-        //     ),
-        //     Expanded(
-        //         child: ListView.separated(
-        //       separatorBuilder: (BuildContext context, int index) =>
-        //           const Divider(
-        //         color: Colors.transparent,
-        //         height: 1,
-        //       ),
-        //       itemCount: list.length,
-        //       itemBuilder: (BuildContext context, int index) {
-        //         return Text("${list[index].category}");
-        //       },
-        //     )),
-        //   ],
-        // ),
-        );
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 150,
+          ),
+          Expanded(
+              child: ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(
+              color: Colors.transparent,
+              height: 1,
+            ),
+            itemCount: categoryList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text("${categoryList[index]}"),
+                onTap: () {},
+              );
+            },
+          )),
+        ],
+      ),
+    );
   }
 }
