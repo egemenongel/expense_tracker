@@ -135,10 +135,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CategoryPage())),
+                  onPressed: () {
+                    _expenseListModel.addCategory();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CategoryPage()));
+                  },
                   child: const Text("Categories")),
             ],
           ),
