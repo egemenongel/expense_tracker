@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/pages/expense_by_category.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +30,14 @@ class CategoryPage extends StatelessWidget {
             itemCount: categoryList.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                title: Text("${categoryList[index]}"),
-                onTap: () {},
-              );
+                  title: Text(categoryList[index]),
+                  onTap: () {
+                    _expenseListModel.expenseByCategory(categoryList[index]);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ExpenseByCategory()));
+                  });
             },
           )),
         ],
