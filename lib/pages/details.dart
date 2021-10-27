@@ -12,7 +12,7 @@ class DetailsPage extends StatelessWidget {
         Provider.of<ExpenseListModel>(context, listen: false);
     var _list = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-    var _listIndex = _list[_markerManager.markerId];
+    var _expense = _list[_markerManager.markerId];
     return Scaffold(
         body: Center(
       child: Padding(
@@ -47,7 +47,7 @@ class DetailsPage extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        "${_listIndex.cost!} TL",
+                        "${_expense.cost!} TL",
                         style:
                             const TextStyle(color: Colors.white, fontSize: 20),
                       ),
@@ -56,7 +56,7 @@ class DetailsPage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  Text(_listIndex.description!,
+                  Text(_expense.description!,
                       style: const TextStyle(
                           fontSize: 20, color: Color(0xFFFFCE19))),
                   const SizedBox(
@@ -65,14 +65,14 @@ class DetailsPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        _listIndex.date!.toString().substring(0, 10),
+                        _expense.date!.toString().substring(0, 10),
                         style: const TextStyle(color: Color(0xFF19FF5A)),
                       ),
                       const Expanded(
                         child: SizedBox(),
                       ),
                       Text(
-                        "${_listIndex.category}",
+                        "${_expense.category}",
                         style: const TextStyle(color: Colors.white),
                       ),
                     ],
