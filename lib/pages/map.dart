@@ -14,9 +14,10 @@ class MapPage extends StatelessWidget {
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
     return Scaffold(
-        body: GoogleMap(
-      markers: Set.from(_markerManager.markersList),
-      initialCameraPosition: _initialCameraPosition,
-    ));
+      body: GoogleMap(
+        markers: Set.from(_markerManager.markersList),
+        initialCameraPosition: _initialCameraPosition,
+      ),
+    );
   }
 }
