@@ -8,6 +8,7 @@ A new Flutter project.
 - [X] Edit Expense
 - [ ] Category Page
 - [ ] Add Total using Fold method.
+- [ ] Fix Edit Expense.
 
 ## Getting Started
 
