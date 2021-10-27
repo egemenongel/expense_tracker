@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/widgets/date_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:date_time_picker/date_time_picker.dart';
@@ -73,18 +74,8 @@ class EditPage extends StatelessWidget {
                     controller: categoryController,
                     validator: (value) => _validation(value),
                   ),
-                  DateTimePicker(
-                    type: DateTimePickerType.date,
-                    dateMask: 'd MMM, yyyy',
-                    initialValue: dateController.text,
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2100),
-                    icon: const Icon(Icons.event),
-                    dateLabelText: 'Date',
-                    timeLabelText: "Hour",
-                    onChanged: (val) => dateController.text = val,
-                    validator: (value) => _validation(value),
-                  ),
+                  DateField(
+                      controller: dateController, validation: _validation),
                   const SizedBox(
                     height: 60,
                   ),
