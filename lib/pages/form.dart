@@ -21,7 +21,7 @@ class FormPage extends StatelessWidget {
     TextEditingController categoryController = TextEditingController();
     TextEditingController? dateController = TextEditingController();
 
-    ExpenseModel _createModel() {
+    ExpenseModel _createExpense() {
       ExpenseModel expenseModel = ExpenseModel(
         description: descriptionController.text,
         cost: int.parse(costController.text),
@@ -97,12 +97,12 @@ class FormPage extends StatelessWidget {
                   TextButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _createModel();
+                          _createExpense();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MarkerPage(
-                                        expense: _createModel(),
+                                        expense: _createExpense(),
                                       )));
                         }
                       },
@@ -114,7 +114,7 @@ class FormPage extends StatelessWidget {
                       child: const Text("Submit"),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _expenseListModel.addExpense(_createModel());
+                          _expenseListModel.addExpense(_createExpense());
                           Navigator.push(
                               context,
                               MaterialPageRoute(
