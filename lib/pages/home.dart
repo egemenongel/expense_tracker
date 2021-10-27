@@ -23,26 +23,6 @@ class HomePage extends StatelessWidget {
     var _expenseList = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
-    void addMarkers() {
-      _markerManager.markersList.clear();
-      for (ExpenseModel expenseModel in _expenseList) {
-        if (expenseModel.latLng != null) {
-          var id = _markerManager.markersList.length;
-          var marker = Marker(
-              markerId: MarkerId("$id"),
-              position: expenseModel.latLng!,
-              onTap: () {
-                _markerManager.markerId = _expenseList.indexOf(expenseModel);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const DetailsPage()));
-              });
-          _markerManager.addMarker(marker);
-        }
-      }
-    }
-
     return Scaffold(
       body: Column(
         children: [
@@ -120,7 +100,7 @@ class HomePage extends StatelessWidget {
             children: [
               TextButton(
                   onPressed: () {
-                    addMarkers();
+                    _markerManager.addMarkers(_expenseList);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
