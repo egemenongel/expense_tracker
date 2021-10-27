@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 50,
