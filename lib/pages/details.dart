@@ -23,12 +23,8 @@ class DetailsPage extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: <Color>[
-                  Color(0xFF0971B3),
-                  Color(0xFFFF0000)
-                ], // red to yellow
-                tileMode:
-                    TileMode.repeated, // repeats the gradient over the canvas
+                colors: <Color>[Color(0xFF0971B3), Color(0xFFFF0000)],
+                tileMode: TileMode.repeated,
               ),
             ),
             child: Padding(
