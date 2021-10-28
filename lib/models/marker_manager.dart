@@ -13,6 +13,7 @@ class MarkerManager extends ChangeNotifier {
   final List<Marker> currentMarkerList = [];
   Marker? marker;
   LatLng? latLng;
+
   addCurrentMarker(LatLng latlng) {
     marker = Marker(
       // icon:
