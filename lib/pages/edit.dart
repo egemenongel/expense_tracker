@@ -35,20 +35,6 @@ class EditPage extends StatelessWidget {
       }
     }
 
-    // void _editForm() {
-    //   ExpenseModel expenseModel = ExpenseModel(
-    //     description: descriptionController.text,
-    //     cost: int.parse(costController.text),
-    //     date: DateTime.parse(dateController.text),
-    //     category: categoryController.text,
-    //   );
-    //   _expenseListStore.editExpense(index, expenseModel);
-    // }
-
-    // void edit() {
-    //   _expenseList[index].cost = 3;
-    // }
-
     return Scaffold(
         appBar: AppBar(
             title: const Text(

@@ -14,10 +14,10 @@ class ExpenseByCategoryPage extends StatelessWidget {
       child: ListView.builder(
         itemCount: _expenseListModel.expenseByCategoryList.length,
         itemBuilder: (BuildContext context, int index) {
-          var expenseList = _expenseListModel.expenseByCategoryList;
+          var expense = _expenseListModel.expenseByCategoryList[index];
           return ListTile(
             title: Text(
-              "${expenseList[index].cost}",
+              "${expense.cost}",
             ),
           );
         },
