@@ -37,17 +37,19 @@ class EditPage extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: costController,
-                    validator: (value) => costValidation(value),
+                    validator: (value) => FormValidation.typeValidation(value),
                   ),
                   TextFormField(
                     controller: descriptionController,
-                    validator: (value) => validation(value),
+                    validator: (value) => FormValidation.emptyValidation(value),
                   ),
                   TextFormField(
                     controller: categoryController,
-                    validator: (value) => validation(value),
+                    validator: (value) => FormValidation.emptyValidation(value),
                   ),
-                  DateField(controller: dateController, validation: validation),
+                  DateField(
+                      controller: dateController,
+                      validation: FormValidation.emptyValidation),
                   const SizedBox(
                     height: 60,
                   ),

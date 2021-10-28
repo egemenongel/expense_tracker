@@ -54,21 +54,21 @@ class FormPage extends StatelessWidget {
                     decoration: const InputDecoration(labelText: "Cost"),
                     controller: costController,
                     keyboardType: TextInputType.number,
-                    validator: (value) => costValidation(value),
+                    validator: (value) => FormValidation.typeValidation(value),
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Description"),
                     controller: descriptionController,
-                    validator: (value) => validation(value),
+                    validator: (value) => FormValidation.emptyValidation(value),
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Category"),
                     controller: categoryController,
-                    validator: (value) => validation(value),
+                    validator: (value) => FormValidation.emptyValidation(value),
                   ),
                   DateField(
                     controller: dateController,
-                    validation: validation,
+                    validation: FormValidation.emptyValidation,
                   ),
                   const SizedBox(
                     height: 10,
