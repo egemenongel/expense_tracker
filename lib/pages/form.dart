@@ -93,7 +93,7 @@ class FormPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MarkerPage(
+                                  builder: (context) => AddMarkerPage(
                                         expense: _createExpense(),
                                       )));
                         }

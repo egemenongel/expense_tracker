@@ -26,7 +26,7 @@ class MarkerManager extends ChangeNotifier {
             onTap: () {
               markerId = expenseList.indexOf(expenseModel);
               Navigator.push(navigatorKey.currentState!.context,
-                  MaterialPageRoute(builder: (context) => const DetailsPage()));
+                  MaterialPageRoute(builder: (context) => DetailsPage()));
             });
         addMarker(marker);
       }

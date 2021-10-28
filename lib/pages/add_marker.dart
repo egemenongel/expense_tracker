@@ -5,14 +5,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:biobuluyo_app/models/expense_list.dart';
 
-class MarkerPage extends StatefulWidget {
-  const MarkerPage({Key? key, required this.expense}) : super(key: key);
+class AddMarkerPage extends StatefulWidget {
+  const AddMarkerPage({Key? key, required this.expense}) : super(key: key);
   final ExpenseModel expense;
   @override
-  State<MarkerPage> createState() => MarkerState();
+  State<AddMarkerPage> createState() => AddMarkerState();
 }
 
-class MarkerState extends State<MarkerPage> {
+class AddMarkerState extends State<AddMarkerPage> {
   static const _initialCameraPosition =
       CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
   GoogleMapController? _googleMapController;
