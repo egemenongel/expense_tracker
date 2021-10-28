@@ -9,11 +9,16 @@ class DateField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DateTimePicker(
+      decoration: InputDecoration(
+        labelText: "Date",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
       type: DateTimePickerType.date,
       dateMask: 'd MMM, yyyy',
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
-      icon: const Icon(Icons.event),
       dateLabelText: 'Date',
       timeLabelText: "Hour",
       controller: controller,

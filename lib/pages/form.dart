@@ -14,6 +14,9 @@ class FormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OutlineInputBorder _border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    );
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     final _formKey = GlobalKey<FormState>();
@@ -51,20 +54,38 @@ class FormPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Cost"),
+                    decoration: InputDecoration(
+                      border: _border,
+                      labelText: "Cost",
+                    ),
                     controller: costController,
                     keyboardType: TextInputType.number,
                     validator: (value) => FormValidation.typeValidation(value),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Description"),
+                    decoration: InputDecoration(
+                      labelText: "Description",
+                      border: _border,
+                    ),
                     controller: descriptionController,
                     validator: (value) => FormValidation.emptyValidation(value),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Category"),
+                    decoration: InputDecoration(
+                      labelText: "Category",
+                      border: _border,
+                    ),
                     controller: categoryController,
                     validator: (value) => FormValidation.emptyValidation(value),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   DateField(
                     controller: dateController,
@@ -73,39 +94,49 @@ class FormPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  TextButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _createExpense();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddMarkerPage(
-                                        expense: _createExpense(),
-                                      )));
-                        }
-                      },
-                      child: const Text("Add Location")),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _createExpense();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddMarkerPage(
+                                              expense: _createExpense(),
+                                            )));
+                              }
+                            },
+                            child: const Text("Add Location")),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 60,
                   ),
-                  ElevatedButton(
-                      child: const Text("Submit"),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _expenseListModel.addExpense(_createExpense());
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
-                        }
-                      }),
                 ],
               ),
             ),
           )
         ],
       )),
+      floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+          Radius.circular(10.0),
+        )),
+        extendedPadding: const EdgeInsets.all(150.0),
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            _expenseListModel.addExpense(_createExpense());
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomePage()));
+          }
+        },
+        label: const Text("Submit"),
+      ),
     );
   }
 }
