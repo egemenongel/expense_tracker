@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/utils/form_validation.dart';
 import 'package:biobuluyo_app/widgets/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,20 +22,6 @@ class EditPage extends StatelessWidget {
     categoryController.text = _selectedItem.category!;
     dateController.text = _selectedItem.date.toString();
 
-    String? _costValidation(String? value) {
-      if (value!.isEmpty) {
-        return "This field cannot be empty";
-      } else if (double.tryParse(value) == null) {
-        return "Please type a number";
-      }
-    }
-
-    String? _validation(String? value) {
-      if (value!.isEmpty) {
-        return "This field cannot be empty";
-      }
-    }
-
     return Scaffold(
         appBar: AppBar(
             title: const Text(
@@ -50,18 +37,17 @@ class EditPage extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: costController,
-                    validator: (value) => _costValidation(value),
+                    validator: (value) => costValidation(value),
                   ),
                   TextFormField(
                     controller: descriptionController,
-                    validator: (value) => _validation(value),
+                    validator: (value) => validation(value),
                   ),
                   TextFormField(
                     controller: categoryController,
-                    validator: (value) => _validation(value),
+                    validator: (value) => validation(value),
                   ),
-                  DateField(
-                      controller: dateController, validation: _validation),
+                  DateField(controller: dateController, validation: validation),
                   const SizedBox(
                     height: 60,
                   ),

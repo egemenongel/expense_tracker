@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/pages/add_marker.dart';
 import 'package:biobuluyo_app/pages/home.dart';
+import 'package:biobuluyo_app/utils/form_validation.dart';
 
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
@@ -31,20 +32,6 @@ class FormPage extends StatelessWidget {
       return expenseModel;
     }
 
-    String? _costValidation(String? value) {
-      if (value!.isEmpty) {
-        return "This field cannot be empty";
-      } else if (double.tryParse(value) == null) {
-        return "Please type a number";
-      }
-    }
-
-    String? _validation(String? value) {
-      if (value!.isEmpty) {
-        return "This field cannot be empty";
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Expense"),
@@ -67,21 +54,21 @@ class FormPage extends StatelessWidget {
                     decoration: const InputDecoration(labelText: "Cost"),
                     controller: costController,
                     keyboardType: TextInputType.number,
-                    validator: (value) => _costValidation(value),
+                    validator: (value) => costValidation(value),
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Description"),
                     controller: descriptionController,
-                    validator: (value) => _validation(value),
+                    validator: (value) => validation(value),
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Category"),
                     controller: categoryController,
-                    validator: (value) => _validation(value),
+                    validator: (value) => validation(value),
                   ),
                   DateField(
                     controller: dateController,
-                    validation: _validation,
+                    validation: validation,
                   ),
                   const SizedBox(
                     height: 10,
