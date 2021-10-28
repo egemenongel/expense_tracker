@@ -75,10 +75,6 @@ class EditPage extends StatelessWidget {
                           category: categoryController.text,
                           date: DateTime.parse(dateController.text));
                       Navigator.pop(context);
-                      // if (_formKey.currentState!.validate()) {
-                      //   // _editForm();
-                      //   Navigator.pop(context);
-                      // }
                     },
                   )
                 ],
