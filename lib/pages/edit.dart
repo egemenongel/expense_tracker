@@ -6,23 +6,23 @@ import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class EditPage extends StatelessWidget {
-  const EditPage({Key? key}) : super(key: key);
-
+  const EditPage({Key? key, required this.index}) : super(key: key);
+  final index;
   @override
   Widget build(BuildContext context) {
     var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _index = _expenseListStore.listIndex;
+    // var _index = _expenseListStore.listIndex;
     var _expenseList = _expenseListStore.expenseList;
     final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
     TextEditingController categoryController = TextEditingController();
     TextEditingController? dateController = TextEditingController();
-    descriptionController.text = _expenseList[_index].description!;
-    costController.text = _expenseList[_index].cost.toString();
-    categoryController.text = _expenseList[_index].category.toString();
-    dateController.text = _expenseList[_index].date.toString();
+    // descriptionController.text = _expenseList[_index].description!;
+    // costController.text = _expenseList[_index].cost.toString();
+    // categoryController.text = _expenseList[_index].category.toString();
+    // dateController.text = _expenseList[_index].date.toString();
 
     String? _costValidation(String? value) {
       if (value!.isEmpty) {
@@ -38,14 +38,18 @@ class EditPage extends StatelessWidget {
       }
     }
 
-    void _editForm() {
-      ExpenseModel expenseModel = ExpenseModel(
-        description: descriptionController.text,
-        cost: int.parse(costController.text),
-        date: DateTime.parse(dateController.text),
-        category: categoryController.text,
-      );
-      _expenseListStore.editExpense(_index, expenseModel);
+    // void _editForm() {
+    //   ExpenseModel expenseModel = ExpenseModel(
+    //     description: descriptionController.text,
+    //     cost: int.parse(costController.text),
+    //     date: DateTime.parse(dateController.text),
+    //     category: categoryController.text,
+    //   );
+    //   _expenseListStore.editExpense(_index, expenseModel);
+    // }
+
+    void edit(ExpenseModel expenseModel) {
+      expenseModel.cost = 4;
     }
 
     return Scaffold(
@@ -81,10 +85,10 @@ class EditPage extends StatelessWidget {
                   ElevatedButton(
                     child: const Text("Edit"),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _editForm();
-                        Navigator.pop(context);
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                      //   // _editForm();
+                      //   Navigator.pop(context);
+                      // }
                     },
                   )
                 ],
