@@ -60,9 +60,6 @@ class HomePage extends StatelessWidget {
                   child: const Text("Categories")),
             ],
           ),
-          // Text(
-          //   "Total: ${_expenseListModel.totalExpense} TL",
-          // ),
           const SizedBox(
             height: 100,
           ),

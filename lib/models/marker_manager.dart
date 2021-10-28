@@ -16,8 +16,6 @@ class MarkerManager extends ChangeNotifier {
 
   addCurrentMarker(LatLng latlng) {
     marker = Marker(
-      // icon:
-      //     BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
       markerId: const MarkerId(""),
       position: latlng,
     );
