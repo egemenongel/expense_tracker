@@ -12,12 +12,12 @@ class DateField extends StatelessWidget {
     return DateTimePicker(
       type: DateTimePickerType.date,
       dateMask: 'd MMM, yyyy',
-      initialValue: "",
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
       icon: const Icon(Icons.event),
       dateLabelText: 'Date',
       timeLabelText: "Hour",
+      controller: controller,
       onChanged: (val) => controller.text = val,
       validator: (value) => validation(value),
     );
