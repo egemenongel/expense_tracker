@@ -85,6 +85,7 @@ class EditPage extends StatelessWidget {
                   ElevatedButton(
                     child: const Text("Edit"),
                     onPressed: () {
+                      debugPrint(index.toString());
                       // if (_formKey.currentState!.validate()) {
                       //   // _editForm();
                       //   Navigator.pop(context);
