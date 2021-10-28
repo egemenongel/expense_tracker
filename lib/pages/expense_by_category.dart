@@ -2,8 +2,8 @@ import 'package:biobuluyo_app/models/expense_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ExpenseByCategory extends StatelessWidget {
-  const ExpenseByCategory({Key? key}) : super(key: key);
+class ExpenseByCategoryPage extends StatelessWidget {
+  const ExpenseByCategoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -6,8 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class MarkerPage extends StatefulWidget {
-  MarkerPage({Key? key, required this.expense}) : super(key: key);
-  ExpenseModel expense;
+  const MarkerPage({Key? key, required this.expense}) : super(key: key);
+  final ExpenseModel expense;
   @override
   State<MarkerPage> createState() => MarkerState();
 }

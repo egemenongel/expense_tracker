@@ -2,10 +2,11 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
 class DateField extends StatelessWidget {
-  DateField({Key? key, required this.controller, required this.validation})
+  const DateField(
+      {Key? key, required this.controller, required this.validation})
       : super(key: key);
-  TextEditingController controller;
-  Function validation;
+  final TextEditingController controller;
+  final Function validation;
   @override
   Widget build(BuildContext context) {
     return DateTimePicker(

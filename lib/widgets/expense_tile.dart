@@ -5,32 +5,32 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
 class ExpenseTile extends StatelessWidget {
-  ExpenseTile({Key? key, required this.index}) : super(key: key);
-  int index;
+  const ExpenseTile({Key? key, required this.index}) : super(key: key);
+  final int index;
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
-    var list = _expenseListModel.expenseList;
+        Provider.of<ExpenseListModel>(context, listen: true);
+    var _expense = _expenseListModel.expenseList[index];
     return Slidable(
       child: ListTile(
         leading: const Icon(Icons.location_on),
         title: Row(
           children: [
-            Text("${list[index].description} "),
+            Text("${_expense.description} "),
             const Expanded(child: SizedBox()),
-            Text("${list[index].cost} TL"),
+            Text("${_expense.cost} TL"),
           ],
         ),
         subtitle: Row(
           children: [
-            Text(list[index].date.toString().substring(0, 10)),
+            Text(_expense.date.toString().substring(0, 10)),
             const Expanded(child: SizedBox()),
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: Text(
-                  "${list[index].category}",
+                  "${_expense.category}",
                   style: const TextStyle(color: Colors.white),
                 ),
               ),

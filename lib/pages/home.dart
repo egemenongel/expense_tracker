@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: true);
+        Provider.of<ExpenseListModel>(context, listen: false);
     var _expenseList = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
