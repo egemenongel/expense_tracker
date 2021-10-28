@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 
@@ -50,6 +51,26 @@ class ExpenseListModel extends ChangeNotifier {
     expenseList[index] = expenseModel;
     notifyListeners();
   }
+
+  void editForm({
+    required int index,
+    required int cost,
+    required String description,
+    required String category,
+    required DateTime date,
+  }) {
+    var item = expenseList[index];
+    item.cost = cost;
+    item.description = description;
+    item.category = category;
+    item.date = date;
+    notifyListeners();
+  }
+
+  // edit(int index) {
+  //   expenseList[index].cost = 3;
+  //   notifyListeners();
+  // }
 
   clearList() {
     expenseList.clear();

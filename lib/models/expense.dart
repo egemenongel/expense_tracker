@@ -6,7 +6,6 @@ class ExpenseModel extends ChangeNotifier {
   int? cost;
   DateTime? date;
   String? category;
-  String? location;
   LatLng? latLng;
 
   ExpenseModel({

@@ -10,7 +10,7 @@ class ExpenseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: true);
+        Provider.of<ExpenseListModel>(context, listen: false);
     var _expense = _expenseListModel.expenseList[index];
     return Slidable(
       child: ListTile(
