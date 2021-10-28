@@ -25,6 +25,11 @@ class MarkerManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  setExpenseLocation({required expense, LatLng? location}) {
+    expense.latLng = location;
+    currentMarkerList.clear();
+  }
+
   addMarker(Marker marker) {
     markersList.add(marker);
     notifyListeners();

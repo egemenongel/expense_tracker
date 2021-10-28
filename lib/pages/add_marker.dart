@@ -36,9 +36,8 @@ class AddMarkerPageState extends State<AddMarkerPage> {
           child: ElevatedButton(
             onPressed: () {
               _expenseListStore.addExpense(widget.expense);
-              widget.expense.latLng = _markerManager
-                  .latLng; //LatLng of last expense is assigned in here.
-              _markerManager.currentMarkerList.clear();
+              _markerManager.setExpenseLocation(
+                  expense: widget.expense, location: _markerManager.latLng);
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
