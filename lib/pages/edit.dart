@@ -10,16 +10,16 @@ class EditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _expenseList = _expenseListStore.expenseList;
+    var _selectedItem = _expenseListStore.expenseList[index];
     final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
     TextEditingController costController = TextEditingController();
     TextEditingController categoryController = TextEditingController();
     TextEditingController dateController = TextEditingController();
-    descriptionController.text = _expenseList[index].description!;
-    costController.text = _expenseList[index].cost.toString();
-    categoryController.text = _expenseList[index].category.toString();
-    dateController.text = _expenseList[index].date.toString();
+    descriptionController.text = _selectedItem.description!;
+    costController.text = _selectedItem.cost.toString();
+    categoryController.text = _selectedItem.category!;
+    dateController.text = _selectedItem.date.toString();
 
     String? _costValidation(String? value) {
       if (value!.isEmpty) {
