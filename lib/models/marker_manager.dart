@@ -10,6 +10,21 @@ class MarkerManager extends ChangeNotifier {
   List<Marker> markersList = [];
   int markerId = 0;
 
+  final List<Marker> currentMarkerList = [];
+  Marker? marker;
+  LatLng? latLng;
+  addCurrentMarker(LatLng latlng) {
+    marker = Marker(
+      // icon:
+      //     BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
+      markerId: const MarkerId(""),
+      position: latlng,
+    );
+    latLng = latlng;
+    currentMarkerList.add(marker!);
+    notifyListeners();
+  }
+
   addMarker(Marker marker) {
     markersList.add(marker);
     notifyListeners();

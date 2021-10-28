@@ -1,4 +1,5 @@
 import 'package:biobuluyo_app/models/expense.dart';
+import 'package:biobuluyo_app/models/marker_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,40 +10,25 @@ class AddMarkerPage extends StatefulWidget {
   const AddMarkerPage({Key? key, required this.expense}) : super(key: key);
   final ExpenseModel expense;
   @override
-  State<AddMarkerPage> createState() => AddMarkerState();
+  State<AddMarkerPage> createState() => AddMarkerPageState();
 }
 
-class AddMarkerState extends State<AddMarkerPage> {
+class AddMarkerPageState extends State<AddMarkerPage> {
   static const _initialCameraPosition =
       CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
   GoogleMapController? _googleMapController;
-  final List<Marker> _currentMarkerList = [];
-  Marker? _marker;
-  // final _randomColor = Random().nextInt(360);
-  LatLng? latLng;
+
   @override
   Widget build(BuildContext context) {
     var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
-
-    _handleTap(LatLng latLng) {
-      setState(() {
-        _marker = Marker(
-          // icon:
-          //     BitmapDescriptor.defaultMarkerWithHue((_randomColor.toDouble())),
-          markerId: const MarkerId(""),
-          position: latLng,
-        );
-        this.latLng = latLng;
-        _currentMarkerList.add(_marker!);
-      });
-    }
+    var _markerManager = Provider.of<MarkerManager>(context, listen: true);
 
     return Scaffold(
       body: GoogleMap(
           onMapCreated: (controller) => _googleMapController = controller,
-          markers: Set.from(_currentMarkerList),
-          onTap: _handleTap,
+          markers: Set.from(_markerManager.currentMarkerList),
+          onTap: _markerManager.addCurrentMarker,
           initialCameraPosition: _initialCameraPosition),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
@@ -50,8 +36,9 @@ class AddMarkerState extends State<AddMarkerPage> {
           child: ElevatedButton(
             onPressed: () {
               _expenseListStore.addExpense(widget.expense);
-              widget.expense.latLng =
-                  latLng; //LatLng of last expense is assigned in here.
+              widget.expense.latLng = _markerManager
+                  .latLng; //LatLng of last expense is assigned in here.
+              _markerManager.currentMarkerList.clear();
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             child: const Text("Submit"),
