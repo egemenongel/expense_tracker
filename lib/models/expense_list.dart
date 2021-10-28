@@ -43,16 +43,7 @@ class ExpenseListModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setIndex(index) {
-    listIndex = index;
-  }
-
-  editExpense(index, ExpenseModel expenseModel) {
-    expenseList[index] = expenseModel;
-    notifyListeners();
-  }
-
-  void editForm({
+  void editExpense({
     required int index,
     required int cost,
     required String description,
@@ -66,11 +57,6 @@ class ExpenseListModel extends ChangeNotifier {
     item.date = date;
     notifyListeners();
   }
-
-  // edit(int index) {
-  //   expenseList[index].cost = 3;
-  //   notifyListeners();
-  // }
 
   clearList() {
     expenseList.clear();

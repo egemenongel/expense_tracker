@@ -10,7 +10,6 @@ class EditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _expenseListStore =
         Provider.of<ExpenseListModel>(context, listen: false);
-    // var index = _expenseListStore.listIndex;
     var _expenseList = _expenseListStore.expenseList;
     final _formKey = GlobalKey<FormState>();
     TextEditingController descriptionController = TextEditingController();
@@ -83,14 +82,12 @@ class EditPage extends StatelessWidget {
                   ElevatedButton(
                     child: const Text("Edit"),
                     onPressed: () {
-                      debugPrint(dateController.text);
-                      _expenseListStore.editForm(
+                      _expenseListStore.editExpense(
                           index: index,
                           cost: int.parse(costController.text),
                           description: descriptionController.text,
                           category: categoryController.text,
                           date: DateTime.parse(dateController.text));
-                      // _expenseListStore.edit(index);
                       Navigator.pop(context);
                       // if (_formKey.currentState!.validate()) {
                       //   // _editForm();
