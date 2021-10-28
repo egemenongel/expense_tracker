@@ -16,6 +16,7 @@ class MarkerManager extends ChangeNotifier {
   }
 
   addMarkers(List expenseList) {
+    markersList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       if (expenseModel.latLng != null) {
         var id = markersList.length;
