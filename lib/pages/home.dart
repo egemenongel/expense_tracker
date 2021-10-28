@@ -1,5 +1,8 @@
+import 'package:biobuluyo_app/models/expense.dart';
+import 'package:biobuluyo_app/pages/details.dart';
 import 'package:biobuluyo_app/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/pages/map.dart';
@@ -18,6 +21,25 @@ class HomePage extends StatelessWidget {
         Provider.of<ExpenseListModel>(context, listen: false);
     var _expenseList = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
+    void addMarkers() {
+      _markerManager.markersList.clear();
+      for (ExpenseModel expenseModel in _expenseList) {
+        if (expenseModel.latLng != null) {
+          var id = _markerManager.markersList.length;
+          var marker = Marker(
+              markerId: MarkerId("$id"),
+              position: expenseModel.latLng!,
+              onTap: () {
+                _markerManager.markerId = _expenseList.indexOf(expenseModel);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailsPage()));
+              });
+          _markerManager.addMarker(marker);
+        }
+      }
+    }
 
     return Scaffold(
       body: Column(
@@ -35,7 +57,7 @@ class HomePage extends StatelessWidget {
             children: [
               TextButton(
                   onPressed: () {
-                    _markerManager.addMarkers(_expenseList);
+                    addMarkers();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
