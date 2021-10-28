@@ -14,7 +14,9 @@ class ExpenseTile extends StatelessWidget {
     var _expense = _expenseListModel.expenseList[index];
     return Slidable(
       child: ListTile(
-        leading: const Icon(Icons.location_on),
+        leading: _expense.latLng != null
+            ? const Icon(Icons.location_on)
+            : const SizedBox(),
         title: Row(
           children: [
             Text("${_expense.description} "),
