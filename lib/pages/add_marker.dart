@@ -22,23 +22,24 @@ class AddMarkerPage extends StatelessWidget {
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: GoogleMap(
           markers: Set.from(_markerManager.currentMarkerList),
           onTap: _markerManager.addCurrentMarker,
           initialCameraPosition: _initialCameraPosition),
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 100),
-          child: ElevatedButton(
-            onPressed: () {
-              _expenseListStore.addExpense(expense);
-              _markerManager.setExpenseLocation(
-                  expense: expense, location: _markerManager.latLng);
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text("Submit"),
-          ),
-        ),
+      floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+          Radius.circular(10.0),
+        )),
+        extendedPadding: const EdgeInsets.all(150.0),
+        onPressed: () {
+          _expenseListStore.addExpense(expense);
+          _markerManager.setExpenseLocation(
+              expense: expense, location: _markerManager.latLng);
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
+        label: const Text("Submit"),
       ),
     );
   }
