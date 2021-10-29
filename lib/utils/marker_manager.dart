@@ -14,7 +14,7 @@ class MarkerManager extends ChangeNotifier {
   Marker? marker;
   LatLng? latLng;
 
-  addCurrentMarker(LatLng latlng) {
+  void addCurrentMarker(LatLng latlng) {
     marker = Marker(
       markerId: const MarkerId(""),
       position: latlng,
@@ -24,12 +24,12 @@ class MarkerManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  addMarker(Marker marker) {
+  void addMarker(Marker marker) {
     markersList.add(marker);
     notifyListeners();
   }
 
-  addMarkers(List expenseList) {
+  void addMarkers(List expenseList) {
     markersList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       if (expenseModel.latLng != null) {
@@ -47,7 +47,7 @@ class MarkerManager extends ChangeNotifier {
     }
   }
 
-  setExpenseLocation({required expense, LatLng? location}) {
+  void setExpenseLocation({required expense, LatLng? location}) {
     expense.latLng = location;
     currentMarkerList.clear();
   }

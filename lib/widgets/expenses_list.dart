@@ -7,19 +7,19 @@ class ExpensesList extends StatelessWidget {
   const ExpensesList({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel =
-        Provider.of<ExpenseListManager>(context, listen: true);
-    return ListView.separated(
-      itemCount: _expenseListModel.expenseList.length,
-      separatorBuilder: (BuildContext context, int index) => const Divider(
-        color: Colors.transparent,
-        height: 1,
-      ),
-      itemBuilder: (BuildContext context, int index) {
-        return ExpenseTile(
-          index: index,
-        );
-      },
-    );
+    return Consumer<ExpenseListManager>(builder: (_, expenseListManager, ___) {
+      return ListView.separated(
+        itemCount: expenseListManager.expenseList.length,
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+          color: Colors.transparent,
+          height: 1,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return ExpenseTile(
+            index: index,
+          );
+        },
+      );
+    });
   }
 }

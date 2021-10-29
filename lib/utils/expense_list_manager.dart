@@ -11,7 +11,7 @@ class ExpenseListManager extends ChangeNotifier {
   int markerId = 0;
   int total = 0;
 
-  addCategory() {
+  void addCategory() {
     categoryList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       var category = expenseModel.category;
@@ -22,7 +22,7 @@ class ExpenseListManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  expenseByCategory(String category) {
+  List expenseByCategory(String category) {
     expenseByCategoryList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       if (expenseModel.category == category) {
@@ -32,12 +32,12 @@ class ExpenseListManager extends ChangeNotifier {
     return expenseByCategoryList;
   }
 
-  addExpense(ExpenseModel expenseModel) {
+  void addExpense(ExpenseModel expenseModel) {
     expenseList.add(expenseModel);
     notifyListeners();
   }
 
-  removeExpense(index) {
+  void removeExpense(index) {
     expenseList.removeAt(index);
     notifyListeners();
   }
@@ -54,11 +54,6 @@ class ExpenseListManager extends ChangeNotifier {
     item.description = description;
     item.category = category;
     item.date = date;
-    notifyListeners();
-  }
-
-  clearList() {
-    expenseList.clear();
     notifyListeners();
   }
 }
