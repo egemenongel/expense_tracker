@@ -1,11 +1,11 @@
 class FormValidation {
-  static String? emptyValidation(String? value) {
+  static String? empty(String? value) {
     if (value!.isEmpty) {
       return "This field cannot be empty";
     }
   }
 
-  static String? typeValidation(String? value) {
+  static String? type(String? value) {
     if (value!.isEmpty) {
       return "This field cannot be empty";
     } else if (double.tryParse(value) == null) {

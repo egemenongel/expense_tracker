@@ -60,7 +60,7 @@ class FormPage extends StatelessWidget {
                     ),
                     controller: costController,
                     keyboardType: TextInputType.number,
-                    validator: (value) => FormValidation.typeValidation(value),
+                    validator: (value) => FormValidation.type(value),
                   ),
                   const SizedBox(
                     height: 20,
@@ -71,7 +71,7 @@ class FormPage extends StatelessWidget {
                       border: _border,
                     ),
                     controller: descriptionController,
-                    validator: (value) => FormValidation.emptyValidation(value),
+                    validator: (value) => FormValidation.empty(value),
                   ),
                   const SizedBox(
                     height: 20,
@@ -82,14 +82,14 @@ class FormPage extends StatelessWidget {
                       border: _border,
                     ),
                     controller: categoryController,
-                    validator: (value) => FormValidation.emptyValidation(value),
+                    validator: (value) => FormValidation.empty(value),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   DateField(
                     controller: dateController,
-                    validation: FormValidation.emptyValidation,
+                    validation: FormValidation.empty,
                   ),
                   const SizedBox(
                     height: 10,
