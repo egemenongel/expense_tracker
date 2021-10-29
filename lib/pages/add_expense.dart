@@ -1,10 +1,9 @@
-import 'package:biobuluyo_app/widgets/date_field.dart';
+import 'package:biobuluyo_app/widgets/expense_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/pages/add_marker.dart';
 import 'package:biobuluyo_app/pages/home.dart';
-import 'package:biobuluyo_app/utils/form_validation.dart';
 
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
@@ -14,25 +13,21 @@ class AddExpensePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OutlineInputBorder _border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
-    );
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
     final _formKey = GlobalKey<FormState>();
-    TextEditingController descriptionController = TextEditingController();
-    TextEditingController costController = TextEditingController();
-    TextEditingController categoryController = TextEditingController();
-    TextEditingController? dateController = TextEditingController();
+    TextEditingController _descriptionController = TextEditingController();
+    TextEditingController _costController = TextEditingController();
+    TextEditingController _categoryController = TextEditingController();
+    TextEditingController? _dateController = TextEditingController();
 
     ExpenseModel _createExpense() {
-      ExpenseModel expenseModel = ExpenseModel(
-        description: descriptionController.text,
-        cost: int.parse(costController.text),
-        date: DateTime.parse(dateController.text),
-        category: categoryController.text,
+      return ExpenseModel(
+        description: _descriptionController.text,
+        cost: int.parse(_costController.text),
+        date: DateTime.parse(_dateController.text),
+        category: _categoryController.text,
       );
-      return expenseModel;
     }
 
     return Scaffold(
@@ -45,58 +40,12 @@ class AddExpensePage extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: _border,
-                      labelText: "Cost",
-                    ),
-                    controller: costController,
-                    keyboardType: TextInputType.number,
-                    validator: (value) => FormValidation.type(value),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Description",
-                      border: _border,
-                    ),
-                    controller: descriptionController,
-                    validator: (value) => FormValidation.empty(value),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Category",
-                      border: _border,
-                    ),
-                    controller: categoryController,
-                    validator: (value) => FormValidation.empty(value),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  DateField(
-                    controller: dateController,
-                    validation: FormValidation.empty,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            ),
+          ExpenseForm(
+            description: _descriptionController,
+            cost: _costController,
+            category: _categoryController,
+            date: _dateController,
+            formKey: _formKey,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
