@@ -6,7 +6,7 @@ import 'package:biobuluyo_app/pages/add_marker.dart';
 import 'package:biobuluyo_app/pages/home.dart';
 
 import 'package:biobuluyo_app/models/expense.dart';
-import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
 class AddExpensePage extends StatelessWidget {
   AddExpensePage({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class AddExpensePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(

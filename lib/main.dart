@@ -3,15 +3,15 @@ import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/pages/home.dart';
 
-import 'package:biobuluyo_app/models/marker_manager.dart';
+import 'package:biobuluyo_app/utils/marker_manager.dart';
 import 'package:biobuluyo_app/models/expense.dart';
-import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
-      create: (_) => ExpenseListModel(),
+      create: (_) => ExpenseListManager(),
     ),
     ChangeNotifierProvider(
       create: (_) => ExpenseModel(),

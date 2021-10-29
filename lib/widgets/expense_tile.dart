@@ -1,4 +1,4 @@
-import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 import 'package:biobuluyo_app/pages/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -10,7 +10,7 @@ class ExpenseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
     var _expense = _expenseListModel.expenseList[index];
     return Slidable(
       child: ListTile(

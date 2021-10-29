@@ -1,7 +1,7 @@
 import 'package:biobuluyo_app/widgets/expense_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
 class EditPage extends StatelessWidget {
   EditPage({Key? key, required this.index}) : super(key: key);
@@ -15,7 +15,7 @@ class EditPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
     void _setInitialValues() {
       var _selectedItem = _expenseListModel.expenseList[index];
       _descriptionController.text = _selectedItem.description!;

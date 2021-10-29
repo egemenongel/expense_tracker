@@ -1,5 +1,5 @@
-import 'package:biobuluyo_app/models/expense_list.dart';
-import 'package:biobuluyo_app/models/marker_manager.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
+import 'package:biobuluyo_app/utils/marker_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +8,7 @@ class DetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
     var _list = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
     var _expense = _list[_markerManager.markerId];

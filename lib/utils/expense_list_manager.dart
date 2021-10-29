@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 
-class ExpenseListModel extends ChangeNotifier {
+class ExpenseListManager extends ChangeNotifier {
   List<ExpenseModel> expenseList = [];
   List categoryList = [];
   List expenseByCategoryList = [];

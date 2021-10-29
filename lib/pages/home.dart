@@ -6,15 +6,15 @@ import 'package:biobuluyo_app/pages/map.dart';
 import 'package:biobuluyo_app/pages/add_expense.dart';
 import 'package:biobuluyo_app/pages/categories.dart';
 
-import 'package:biobuluyo_app/models/expense_list.dart';
-import 'package:biobuluyo_app/models/marker_manager.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
+import 'package:biobuluyo_app/utils/marker_manager.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
     var _expenseList = _expenseListModel.expenseList;
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 

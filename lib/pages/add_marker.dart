@@ -1,10 +1,10 @@
 import 'package:biobuluyo_app/models/expense.dart';
-import 'package:biobuluyo_app/models/marker_manager.dart';
+import 'package:biobuluyo_app/utils/marker_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'package:biobuluyo_app/models/expense_list.dart';
+import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
 class AddMarkerPage extends StatelessWidget {
   const AddMarkerPage({
@@ -18,7 +18,7 @@ class AddMarkerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListStore =
-        Provider.of<ExpenseListModel>(context, listen: false);
+        Provider.of<ExpenseListManager>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
 
     return Scaffold(
