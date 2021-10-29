@@ -98,18 +98,21 @@ class FormPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _createExpense();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddMarkerPage(
-                                              expense: _createExpense(),
-                                            )));
-                              }
-                            },
-                            child: const Text("Add Location")),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _createExpense();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddMarkerPage(
+                                            expense: _createExpense(),
+                                          )));
+                            }
+                          },
+                          child: const Text("Add Location"),
+                          style:
+                              ElevatedButton.styleFrom(primary: Colors.green),
+                        ),
                       ),
                     ],
                   ),
