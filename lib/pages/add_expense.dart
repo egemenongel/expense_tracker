@@ -9,8 +9,8 @@ import 'package:biobuluyo_app/utils/form_validation.dart';
 import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
-class FormPage extends StatelessWidget {
-  const FormPage({Key? key}) : super(key: key);
+class AddExpensePage extends StatelessWidget {
+  const AddExpensePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
