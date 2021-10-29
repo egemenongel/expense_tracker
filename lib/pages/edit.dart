@@ -4,19 +4,19 @@ import 'package:provider/provider.dart';
 import 'package:biobuluyo_app/models/expense_list.dart';
 
 class EditPage extends StatelessWidget {
-  const EditPage({Key? key, required this.index}) : super(key: key);
+  EditPage({Key? key, required this.index}) : super(key: key);
   final int index;
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _selectedItem = _expenseListModel.expenseList[index];
-    final _formKey = GlobalKey<FormState>();
     TextEditingController _descriptionController = TextEditingController();
     TextEditingController _costController = TextEditingController();
     TextEditingController _categoryController = TextEditingController();
     TextEditingController _dateController = TextEditingController();
     void _setInitialValues() {
+      var _selectedItem = _expenseListModel.expenseList[index];
       _descriptionController.text = _selectedItem.description!;
       _costController.text = _selectedItem.cost.toString();
       _categoryController.text = _selectedItem.category!;

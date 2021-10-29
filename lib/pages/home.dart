@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddExpensePage()));
+              MaterialPageRoute(builder: (context) => AddExpensePage()));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
