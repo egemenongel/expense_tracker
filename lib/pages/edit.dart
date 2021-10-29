@@ -8,19 +8,22 @@ class EditPage extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    var _expenseListStore =
+    var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
-    var _selectedItem = _expenseListStore.expenseList[index];
+    var _selectedItem = _expenseListModel.expenseList[index];
     final _formKey = GlobalKey<FormState>();
     TextEditingController _descriptionController = TextEditingController();
     TextEditingController _costController = TextEditingController();
     TextEditingController _categoryController = TextEditingController();
     TextEditingController _dateController = TextEditingController();
-    _descriptionController.text = _selectedItem.description!;
-    _costController.text = _selectedItem.cost.toString();
-    _categoryController.text = _selectedItem.category!;
-    _dateController.text = _selectedItem.date.toString();
+    void _setInitialValues() {
+      _descriptionController.text = _selectedItem.description!;
+      _costController.text = _selectedItem.cost.toString();
+      _categoryController.text = _selectedItem.category!;
+      _dateController.text = _selectedItem.date.toString();
+    }
 
+    _setInitialValues();
     return Scaffold(
       appBar: AppBar(
           title: const Text(
@@ -48,7 +51,7 @@ class EditPage extends StatelessWidget {
                       child: const Text("Edit"),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _expenseListStore.editExpense(
+                          _expenseListModel.editExpense(
                               index: index,
                               cost: int.parse(_costController.text),
                               description: _descriptionController.text,
