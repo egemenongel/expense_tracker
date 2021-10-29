@@ -8,10 +8,10 @@ class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel =
+    var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: true);
-    var categoryList = _expenseListModel.categoryList;
-    var expenseList = _expenseListModel.expenseList;
+    var categoryList = _expenseListManager.categoryList;
+    var expenseList = _expenseListManager.expenseList;
 
     return Scaffold(
       body: Column(
@@ -31,7 +31,7 @@ class CategoryPage extends StatelessWidget {
               return ListTile(
                   title: Text(categoryList[index]),
                   onTap: () {
-                    _expenseListModel.expenseByCategory(categoryList[index]);
+                    _expenseListManager.expenseByCategory(categoryList[index]);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

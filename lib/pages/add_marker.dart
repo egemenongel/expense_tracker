@@ -17,7 +17,7 @@ class AddMarkerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _expenseListStore =
+    var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: false);
     var _markerManager = Provider.of<MarkerManager>(context, listen: true);
 
@@ -34,7 +34,7 @@ class AddMarkerPage extends StatelessWidget {
         )),
         extendedPadding: const EdgeInsets.all(150.0),
         onPressed: () {
-          _expenseListStore.addExpense(expense);
+          _expenseListManager.addExpense(expense);
           _markerManager.setExpenseLocation(
               expense: expense, location: _markerManager.latLng);
           Navigator.of(context).popUntil((route) => route.isFirst);

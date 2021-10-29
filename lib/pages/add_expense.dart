@@ -26,7 +26,7 @@ class AddExpensePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel =
+    var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: false);
 
     return Scaffold(
@@ -84,7 +84,7 @@ class AddExpensePage extends StatelessWidget {
         extendedPadding: const EdgeInsets.all(150.0),
         onPressed: () {
           if (_formKey.currentState!.validate()) {
-            _expenseListModel.addExpense(_createExpense());
+            _expenseListManager.addExpense(_createExpense());
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const HomePage()));
           }

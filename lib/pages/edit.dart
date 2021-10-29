@@ -14,10 +14,10 @@ class EditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _expenseListModel =
+    var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: false);
     void _setInitialValues() {
-      var _selectedItem = _expenseListModel.expenseList[index];
+      var _selectedItem = _expenseListManager.expenseList[index];
       _descriptionController.text = _selectedItem.description!;
       _costController.text = _selectedItem.cost.toString();
       _categoryController.text = _selectedItem.category!;
@@ -52,7 +52,7 @@ class EditPage extends StatelessWidget {
                       child: const Text("Edit"),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          _expenseListModel.editExpense(
+                          _expenseListManager.editExpense(
                               index: index,
                               cost: int.parse(_costController.text),
                               description: _descriptionController.text,
