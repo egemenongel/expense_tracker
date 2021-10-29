@@ -94,35 +94,38 @@ class AddExpensePage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              _createExpense();
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AddMarkerPage(
-                                            expense: _createExpense(),
-                                          )));
-                            }
-                          },
-                          child: const Text("Add Location"),
-                          style:
-                              ElevatedButton.styleFrom(primary: Colors.green),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 60,
-                  ),
                 ],
               ),
             ),
-          )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _createExpense();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddMarkerPage(
+                                      expense: _createExpense(),
+                                    )));
+                      }
+                    },
+                    child: const Text("Add Location"),
+                    style: ElevatedButton.styleFrom(primary: Colors.green),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 60,
+          ),
         ],
       )),
       floatingActionButton: FloatingActionButton.extended(
