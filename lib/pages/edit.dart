@@ -7,10 +7,10 @@ class EditPage extends StatelessWidget {
   EditPage({Key? key, required this.index}) : super(key: key);
   final int index;
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _descriptionController = TextEditingController();
-  TextEditingController _costController = TextEditingController();
-  TextEditingController _categoryController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _costController = TextEditingController();
+  final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
