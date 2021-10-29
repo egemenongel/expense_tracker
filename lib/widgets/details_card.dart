@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 class DetailsCard extends StatelessWidget {
   const DetailsCard({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
