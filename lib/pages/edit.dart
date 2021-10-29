@@ -7,14 +7,15 @@ class EditPage extends StatelessWidget {
   EditPage({Key? key, required this.index}) : super(key: key);
   final int index;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController _descriptionController = TextEditingController();
+  TextEditingController _costController = TextEditingController();
+  TextEditingController _categoryController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
-    TextEditingController _descriptionController = TextEditingController();
-    TextEditingController _costController = TextEditingController();
-    TextEditingController _categoryController = TextEditingController();
-    TextEditingController _dateController = TextEditingController();
     void _setInitialValues() {
       var _selectedItem = _expenseListModel.expenseList[index];
       _descriptionController.text = _selectedItem.description!;

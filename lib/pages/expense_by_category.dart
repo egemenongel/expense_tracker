@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 class ExpenseByCategoryPage extends StatelessWidget {
   const ExpenseByCategoryPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =

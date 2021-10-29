@@ -6,7 +6,6 @@ import 'package:biobuluyo_app/models/expense_list.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =

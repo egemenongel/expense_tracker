@@ -11,23 +11,23 @@ import 'package:biobuluyo_app/models/expense_list.dart';
 class AddExpensePage extends StatelessWidget {
   AddExpensePage({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _costController = TextEditingController();
+  final TextEditingController _categoryController = TextEditingController();
+  final TextEditingController? _dateController = TextEditingController();
+  ExpenseModel _createExpense() {
+    return ExpenseModel(
+      description: _descriptionController.text,
+      cost: int.parse(_costController.text),
+      date: DateTime.parse(_dateController!.text),
+      category: _categoryController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var _expenseListModel =
         Provider.of<ExpenseListModel>(context, listen: false);
-    TextEditingController _descriptionController = TextEditingController();
-    TextEditingController _costController = TextEditingController();
-    TextEditingController _categoryController = TextEditingController();
-    TextEditingController? _dateController = TextEditingController();
-
-    ExpenseModel _createExpense() {
-      return ExpenseModel(
-        description: _descriptionController.text,
-        cost: int.parse(_costController.text),
-        date: DateTime.parse(_dateController.text),
-        category: _categoryController.text,
-      );
-    }
 
     return Scaffold(
       appBar: AppBar(
