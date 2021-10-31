@@ -30,15 +30,17 @@ class _AddMarkerPageState extends State<AddMarkerPage> {
   Widget build(BuildContext context) {
     var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: false);
-    var _markerManager = Provider.of<MarkerManager>(context, listen: true);
+    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: GoogleMap(
-          onMapCreated: (controller) => _googleMapController = controller,
-          markers: Set.from(_markerManager.currentMarkerList),
-          onTap: _markerManager.addCurrentMarker,
-          initialCameraPosition: _initialCameraPosition),
+      body: Consumer<MarkerManager>(
+        builder: (_, markerManager, __) => GoogleMap(
+            onMapCreated: (controller) => _googleMapController = controller,
+            markers: Set.from(markerManager.currentMarkerList),
+            onTap: markerManager.addCurrentMarker,
+            initialCameraPosition: _initialCameraPosition),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(

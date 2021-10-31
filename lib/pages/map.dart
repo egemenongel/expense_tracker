@@ -10,11 +10,9 @@ class MapPage extends StatelessWidget {
       CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
   @override
   Widget build(BuildContext context) {
-    var _markerManager = Provider.of<MarkerManager>(context, listen: false);
-
     return Scaffold(
       body: GoogleMap(
-        markers: Set.from(_markerManager.markersList),
+        markers: Set.from(context.read<MarkerManager>().markersList),
         initialCameraPosition: _initialCameraPosition,
       ),
     );
