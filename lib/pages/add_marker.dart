@@ -6,14 +6,25 @@ import 'package:biobuluyo_app/models/expense.dart';
 import 'package:biobuluyo_app/utils/marker_manager.dart';
 import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
-class AddMarkerPage extends StatelessWidget {
+class AddMarkerPage extends StatefulWidget {
   const AddMarkerPage({
     Key? key,
     required this.expense,
   }) : super(key: key);
   final ExpenseModel expense;
+  @override
+  State<AddMarkerPage> createState() => _AddMarkerPageState();
+}
+
+class _AddMarkerPageState extends State<AddMarkerPage> {
   final _initialCameraPosition =
       const CameraPosition(target: LatLng(39.9686631, 34.5125143), zoom: 5);
+  GoogleMapController? _googleMapController;
+  @override
+  void dispose() {
+    _googleMapController!.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +35,7 @@ class AddMarkerPage extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: GoogleMap(
+          onMapCreated: (controller) => _googleMapController = controller,
           markers: Set.from(_markerManager.currentMarkerList),
           onTap: _markerManager.addCurrentMarker,
           initialCameraPosition: _initialCameraPosition),
@@ -34,9 +46,9 @@ class AddMarkerPage extends StatelessWidget {
         )),
         extendedPadding: const EdgeInsets.all(150.0),
         onPressed: () {
-          _expenseListManager.addExpense(expense);
+          _expenseListManager.addExpense(widget.expense);
           _markerManager.setExpenseLocation(
-              expense: expense, location: _markerManager.latLng);
+              expense: widget.expense, location: _markerManager.latLng);
           Navigator.of(context).popUntil((route) => route.isFirst);
         },
         label: const Text("Submit"),
