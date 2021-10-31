@@ -27,9 +27,14 @@ class EditPage extends StatelessWidget {
     _setInitialValues();
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-        "Edit Expense",
-      )),
+        title: Center(
+          child: Text(
+            "Edit Expense",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -49,7 +54,10 @@ class EditPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: ElevatedButton(
-                      child: const Text("Edit"),
+                      child: const Text(
+                        "Edit",
+                        style: TextStyle(color: Colors.white),
+                      ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _expenseListManager.editExpense(

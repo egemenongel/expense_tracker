@@ -9,11 +9,18 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _expenseListManager =
-        Provider.of<ExpenseListManager>(context, listen: true);
+        Provider.of<ExpenseListManager>(context, listen: false);
     var categoryList = _expenseListManager.categoryList;
-    var expenseList = _expenseListManager.expenseList;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+            child: Text(
+          "Categories",
+          style: Theme.of(context).textTheme.headline4,
+        )),
+        automaticallyImplyLeading: false,
+      ),
       body: Column(
         children: [
           const SizedBox(
@@ -24,20 +31,32 @@ class CategoryPage extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(
               color: Colors.transparent,
-              height: 1,
+              height: 10,
             ),
             itemCount: categoryList.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                  title: Text(categoryList[index]),
-                  onTap: () {
-                    _expenseListManager.expenseByCategory(categoryList[index]);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const ExpenseByCategoryPage()));
-                  });
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: Colors.black, width: 2)),
+                    child: Theme(
+                      child: ListTile(
+                        title: Center(child: Text(categoryList[index])),
+                        onTap: () {
+                          _expenseListManager
+                              .expenseByCategory(categoryList[index]);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ExpenseByCategoryPage()));
+                        },
+                      ),
+                      data: ThemeData(highlightColor: Colors.blueAccent),
+                    )),
+              );
             },
           )),
         ],
