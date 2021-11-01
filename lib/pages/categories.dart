@@ -41,7 +41,7 @@ class CategoriesPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.blueGrey[300],
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black, width: 2)),
+                            border: Border.all()),
                         child: Theme(
                           child: ListTile(
                             title: Center(
