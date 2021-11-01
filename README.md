@@ -18,9 +18,11 @@ A new Flutter project.
 
 ### Add Marker
 
-### Remove Expense
-
 ### Sliders
+
+#### Edit Slider
+
+#### Remove Slider
 
 ### Edit Expense
 
