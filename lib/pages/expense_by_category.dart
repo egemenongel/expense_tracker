@@ -32,14 +32,14 @@ class ExpenseByCategoryPage extends StatelessWidget {
             ReportCard(
                 icon: Icons.account_balance_wallet_rounded,
                 title: "Total Expenses",
-                subtitle: "${_expenseListManager.total} TL"),
+                subtitle: _expenseListManager.total.toStringAsFixed(2) + " TL"),
             const SizedBox(
               height: 20,
             ),
             ReportCard(
               icon: Icons.apps_rounded,
               title: "Average Expense",
-              subtitle: "${_expenseListManager.average} TL",
+              subtitle: _expenseListManager.average!.toStringAsFixed(2) + " TL",
             ),
             const SizedBox(
               height: 20,
