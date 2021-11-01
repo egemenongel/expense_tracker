@@ -11,6 +11,12 @@ class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text("Map", style: Theme.of(context).textTheme.headline4),
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: GoogleMap(
         markers: Set.from(context.read<MarkerManager>().markersList),
         initialCameraPosition: _initialCameraPosition,
