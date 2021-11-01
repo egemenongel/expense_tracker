@@ -34,7 +34,7 @@ class _AddMarkerPageState extends State<AddMarkerPage> {
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: "Add Marker",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

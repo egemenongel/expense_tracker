@@ -27,7 +27,7 @@ class EditPage extends StatelessWidget {
 
     _setInitialValues();
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: "Edit Expense",
       ),
       body: SingleChildScrollView(

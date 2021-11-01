@@ -14,7 +14,7 @@ class CategoriesPage extends StatelessWidget {
     var categoryList = _expenseListManager.categoryList;
 
     return Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           title: "Categories",
         ),
         body: Column(
