@@ -53,7 +53,7 @@ class _AddMarkerPageState extends State<AddMarkerPage> {
               expense: widget.expense, location: _markerManager.latLng);
           Navigator.of(context).popUntil((route) => route.isFirst);
         },
-        label: const Text("Submit"),
+        label: Text("Submit", style: Theme.of(context).textTheme.headline6),
       ),
     );
   }

@@ -28,7 +28,11 @@ class AddExpensePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Expense"),
+        title: Center(
+          child:
+              Text("Add Expense", style: Theme.of(context).textTheme.headline4),
+        ),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
           child: Column(
@@ -61,7 +65,8 @@ class AddExpensePage extends StatelessWidget {
                                     )));
                       }
                     },
-                    child: const Text("Add Location"),
+                    child: Text("Add Location",
+                        style: Theme.of(context).textTheme.headline6),
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                   ),
                 ),
@@ -86,7 +91,7 @@ class AddExpensePage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const HomePage()));
           }
         },
-        label: const Text("Submit"),
+        label: Text("Submit", style: Theme.of(context).textTheme.headline6),
       ),
     );
   }

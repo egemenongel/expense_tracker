@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
       title: 'BioBuluyo App',
       theme: ThemeData(
           primarySwatch: Colors.lightBlue,
-          textTheme:
-              const TextTheme(headline4: TextStyle(color: Colors.white))),
+          textTheme: const TextTheme(
+              headline4: TextStyle(color: Colors.white),
+              headline6: TextStyle(color: Colors.white))),
       debugShowCheckedModeBanner: false,
     );
   }
