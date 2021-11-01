@@ -1,4 +1,5 @@
 import 'package:biobuluyo_app/pages/expense_by_category.dart';
+import 'package:biobuluyo_app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,13 +14,8 @@ class CategoriesPage extends StatelessWidget {
     var categoryList = _expenseListManager.categoryList;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Center(
-              child: Text(
-            "Categories",
-            style: Theme.of(context).textTheme.headline4,
-          )),
-          automaticallyImplyLeading: false,
+        appBar: CustomAppBar(
+          title: "Categories",
         ),
         body: Column(
           children: [

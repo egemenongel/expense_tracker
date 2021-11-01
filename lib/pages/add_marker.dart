@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -33,6 +34,9 @@ class _AddMarkerPageState extends State<AddMarkerPage> {
     var _markerManager = Provider.of<MarkerManager>(context, listen: false);
 
     return Scaffold(
+      appBar: CustomAppBar(
+        title: "Add Marker",
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Consumer<MarkerManager>(
         builder: (_, markerManager, __) => GoogleMap(

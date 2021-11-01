@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/widgets/app_bar.dart';
 import 'package:biobuluyo_app/widgets/expense_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,12 +28,8 @@ class AddExpensePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child:
-              Text("Add Expense", style: Theme.of(context).textTheme.headline4),
-        ),
-        automaticallyImplyLeading: false,
+      appBar: CustomAppBar(
+        title: "Add Expense",
       ),
       body: SingleChildScrollView(
           child: Column(

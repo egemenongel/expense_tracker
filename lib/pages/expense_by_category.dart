@@ -1,3 +1,4 @@
+import 'package:biobuluyo_app/widgets/app_bar.dart';
 import 'package:biobuluyo_app/widgets/report_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,14 +11,10 @@ class ExpenseByCategoryPage extends StatelessWidget {
     var _expenseListManager =
         Provider.of<ExpenseListManager>(context, listen: false);
     return Scaffold(
-      backgroundColor: Colors.blue[50],
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-              "${_expenseListManager.expenseByCategoryList.first.category}"),
-        ),
-        automaticallyImplyLeading: false,
+      appBar: CustomAppBar(
+        title: "${_expenseListManager.expenseByCategoryList.first.category}",
       ),
+      backgroundColor: Colors.blue[50],
       body: Center(
           child: SingleChildScrollView(
         child: Column(
