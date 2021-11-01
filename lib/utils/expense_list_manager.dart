@@ -9,7 +9,8 @@ class ExpenseListManager extends ChangeNotifier {
   int totalExpense = 0;
   var listIndex = 0;
   int markerId = 0;
-  int total = 0;
+  double total = 0;
+  double? average;
 
   void addCategory() {
     categoryList.clear();
@@ -23,10 +24,16 @@ class ExpenseListManager extends ChangeNotifier {
   }
 
   List expenseByCategory(String category) {
+    total = 0;
     expenseByCategoryList.clear();
     for (ExpenseModel expenseModel in expenseList) {
       if (expenseModel.category == category) {
         expenseByCategoryList.add(expenseModel);
+        totalExpense = expenseByCategoryList.length;
+        total = total + expenseModel.cost!; // Total cost for each category
+        average = total /
+            expenseByCategoryList.length; // Average cost for each category
+
       }
     }
     return expenseByCategoryList;
@@ -44,7 +51,7 @@ class ExpenseListManager extends ChangeNotifier {
 
   void editExpense({
     required int index,
-    required int cost,
+    required double cost,
     required String description,
     required String category,
     required DateTime date,
