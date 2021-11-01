@@ -11,7 +11,6 @@ class ExpensesList extends StatelessWidget {
       return ListView.separated(
         itemCount: expenseListManager.expenseList.length,
         separatorBuilder: (BuildContext context, int index) => const Divider(
-          color: Colors.transparent,
           height: 1,
         ),
         itemBuilder: (BuildContext context, int index) {
