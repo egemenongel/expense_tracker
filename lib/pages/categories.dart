@@ -39,11 +39,16 @@ class CategoriesPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: Container(
                     decoration: BoxDecoration(
+                        color: Colors.blueGrey[300],
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(color: Colors.black, width: 2)),
                     child: Theme(
                       child: ListTile(
-                        title: Center(child: Text(categoryList[index])),
+                        title: Center(
+                            child: Text(
+                          categoryList[index],
+                          style: TextStyle(color: Colors.white),
+                        )),
                         onTap: () {
                           _expenseListManager
                               .expenseByCategory(categoryList[index]);
