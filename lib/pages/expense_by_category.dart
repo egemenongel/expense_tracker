@@ -15,6 +15,7 @@ class ExpenseByCategoryPage extends StatelessWidget {
           child: Text(
               "${_expenseListManager.expenseByCategoryList.first.category}"),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
           child: SingleChildScrollView(
@@ -69,8 +70,10 @@ class ExpenseByCategoryPage extends StatelessWidget {
               height: 200.0,
               width: 250.0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  SizedBox(
+                    width: 10,
+                  ),
                   Container(
                     width: 50.0,
                     height: 50.0,
@@ -122,8 +125,10 @@ class ExpenseByCategoryPage extends StatelessWidget {
               height: 200.0,
               width: 250.0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  SizedBox(
+                    width: 10,
+                  ),
                   Container(
                     width: 50.0,
                     height: 50.0,
@@ -175,8 +180,10 @@ class ExpenseByCategoryPage extends StatelessWidget {
               height: 200.0,
               width: 250.0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  SizedBox(
+                    width: 10,
+                  ),
                   Container(
                     width: 50.0,
                     height: 50.0,
