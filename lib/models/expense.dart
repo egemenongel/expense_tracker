@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ExpenseModel extends ChangeNotifier {
   String? description;
-  int? cost;
+  double? cost;
   DateTime? date;
   String? category;
   LatLng? latLng;
