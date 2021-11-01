@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'package:biobuluyo_app/utils/expense_list_manager.dart';
 
-class CategoryPage extends StatelessWidget {
-  const CategoryPage({Key? key}) : super(key: key);
+class CategoriesPage extends StatelessWidget {
+  const CategoriesPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var _expenseListManager =
