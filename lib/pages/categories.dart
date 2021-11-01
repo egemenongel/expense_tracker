@@ -47,7 +47,7 @@ class CategoriesPage extends StatelessWidget {
                         title: Center(
                             child: Text(
                           categoryList[index],
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         )),
                         onTap: () {
                           _expenseListManager
