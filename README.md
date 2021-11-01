@@ -1,6 +1,21 @@
 # biobuluyo_app
 
-A new Flutter project.
+## **Table of Contents**
+
+- [biobuluyo app](#biobuluyo-app)
+  * [Table of Contents](#table-of-contents)
+  * [Description](#description)
+  * [To Do](#to-do)
+  * [Screenshots](#screenshots)
+    + [Home Screen](#home-screen)
+    + [Add Expense](#add-expense)
+    + [Edit Expense](#edit-expense)
+    + [Remove Expense](#remove-expense)
+    + [Map](#map)
+    + [Categories](#categories)
+    + [Report](#report)
+
+## Description
 
 ## TO DO
 
