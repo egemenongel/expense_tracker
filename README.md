@@ -21,16 +21,11 @@ A new Flutter project.
 ### Add Marker
 <img src="https://user-images.githubusercontent.com/73590188/139677773-11604808-8429-45cd-a321-f33b20cf8c9c.png" alt="Add Marker" width="400"/>
 
-### Sliders
-
-#### Edit Slider
-<img src="https://user-images.githubusercontent.com/73590188/139677788-15bfc7ee-6095-4b2b-b530-903bdc129efc.png" alt="Edit Slider" width="400"/>
-
-#### Remove Slider
-<img src="https://user-images.githubusercontent.com/73590188/139677800-e4158798-5d7f-433b-88a3-58f1c5bb19ee.png" alt="Remove Slider" width="400"/>
-
 ### Edit Expense
 <img src="https://user-images.githubusercontent.com/73590188/139694858-f49af87e-6ade-45b2-aae5-336253ca1ce5.gif" alt="Edit Expense" width="400"/>
+
+### Remove Expense
+<img src="https://user-images.githubusercontent.com/73590188/139696550-b758baab-cb79-4427-bf4b-4d29cbcf22d1.gif" alt="Remove Expense" width="400"/>
 
 ### Map
 <img src="https://user-images.githubusercontent.com/73590188/139695042-18b1047a-8fa6-4dfa-8d15-eb1169bf52b0.gif" alt="Map" width="400"/>
