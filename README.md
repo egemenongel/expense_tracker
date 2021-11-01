@@ -30,7 +30,7 @@ A new Flutter project.
 <img src="https://user-images.githubusercontent.com/73590188/139677800-e4158798-5d7f-433b-88a3-58f1c5bb19ee.png" alt="Remove Slider" width="400"/>
 
 ### Edit Expense
-
+<img src="https://user-images.githubusercontent.com/73590188/139678680-43333282-d4cd-40e2-aac8-445f722903a2.png" alt="Remove Slider" width="400"/>
 
 ### Map
 <img src="https://user-images.githubusercontent.com/73590188/139677863-24359a97-14e0-4c91-b453-4b9ca3063707.png" alt="Map" width="400"/>
