@@ -49,7 +49,6 @@ class ExpenseTile extends StatelessWidget {
           icon: Icons.edit,
           color: Colors.blue,
           onTap: () {
-            // _expenseListModel.setIndex(index);
             Navigator.push(
                 context,
                 MaterialPageRoute(
