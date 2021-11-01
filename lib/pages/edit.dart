@@ -62,7 +62,7 @@ class EditPage extends StatelessWidget {
                         if (_formKey.currentState!.validate()) {
                           _expenseListManager.editExpense(
                               index: index,
-                              cost: int.parse(_costController.text),
+                              cost: double.parse(_costController.text),
                               description: _descriptionController.text,
                               category: _categoryController.text,
                               date: DateTime.parse(_dateController.text));

@@ -18,7 +18,7 @@ class AddExpensePage extends StatelessWidget {
   ExpenseModel _createExpense() {
     return ExpenseModel(
       description: _descriptionController.text,
-      cost: int.parse(_costController.text),
+      cost: double.parse(_costController.text),
       date: DateTime.parse(_dateController!.text),
       category: _categoryController.text,
     );
