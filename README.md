@@ -17,12 +17,7 @@
 
 ## Description
 
-## TO DO
-
-- [X] Map Page
-- [X] Edit Expense
-- [X] Report Page
-- [X] Fix Edit Expense.
+Users can track their expenses on different locations of the world.
 
 ## Screenshots
 
