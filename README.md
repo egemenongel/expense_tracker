@@ -22,7 +22,6 @@
 - [X] Map Page
 - [X] Edit Expense
 - [X] Report Page
-- [ ] Add Total using Fold method.
 - [X] Fix Edit Expense.
 
 ## Screenshots
