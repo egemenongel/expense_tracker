@@ -17,7 +17,7 @@
 
 ## Description
 
-Users can track their expenses on different locations of the world.
+Expense Tracker app built using Google Map API. Users can track their expenses on different locations of the world.
 
 ## Screenshots
 
