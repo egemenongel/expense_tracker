@@ -1,11 +1,7 @@
-# biobuluyo_app
-
 ## **Table of Contents**
 
-- [biobuluyo app](#biobuluyo_app)
   * [Table of Contents](#table-of-contents)
   * [Description](#description)
-  * [To Do](#to-do)
   * [Screenshots](#screenshots)
     + [Home Screen](#home-screen)
     + [Add Expense](#add-expense)
